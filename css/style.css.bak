@@ -1,4 +1,4 @@
-/* .select-boxes{
+.select-boxes{
 	width: 385px;
 	text-align: center;
 	padding-left: 15px;
@@ -24,4 +24,4 @@ select option{
 footer {
 	text-align: center;
     display: block;
-} */
+}

@@ -1,6 +1,4 @@
-   
-   
-<?php
+   <?php
 include_once("dbConfig.php");
 
 	if(ISSET($_REQUEST['cities'])){
@@ -16,9 +14,27 @@ WHERE product_id='".$_REQUEST['products']."'") or die(mysqli_error());
 			echo"<tr><td>".$fetch['name']."</td><td>".$fetch['category']."</td></tr>";
 		}
 	}else{
-		$query=mysqli_query($db, "SELECT * FROM `cities`") or die(mysqli_error());
+		$query=mysqli_query($db, "SELECT * FROM `products`") or die(mysqli_error());
+		 echo '<table class="table table-bordered table-striped">';
+                                echo "<thead>";
+                                    echo "<tr>";
+                                        echo "<th>#</th>";
+                                        echo "<th>Name</th>";
+                                        echo "<th>Address</th>";
+                                        echo "<th>Salary</th>";
+                                        echo "<th>Action</th>";
+                                    echo "</tr>";
+                                echo "</thead>";
+                                echo "<tbody>";
+		
 		while($fetch=mysqli_fetch_array($query)){
-			echo"<tr><td>".$fetch['state_id']."</td><td>".$fetch['city_name']."</td></tr>";
+			
+			
+			echo"<tr>
+			<td>".$fetch['product_id']."</td>
+			<td>".$fetch['product_name']."</td>
+			<td>".$fetch['city_id']."</td>
+			</tr>";
 		}
 	}
 		
