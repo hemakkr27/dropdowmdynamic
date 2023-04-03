@@ -5,8 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<link type="text/css" rel="stylesheet" href="css/style.css">
 	
-	<link type="text/css" rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
-	<link type="text/css" rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css">
+<!-- 	<link type="text/css" rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css"> -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="css/jquery.min.js"></script>
@@ -29,12 +29,13 @@ $(document).ready(function(){
                 success:function(html){
                     $('#tehsil').html(html);
                     $('#village').html('<option value="">Select Your State First</option>'); 
+					 $('#villagedetail').html('<option value="">Select Your village First</option>'); 
                 }
             }); 
         }else{
             $('#tehsil').html('<option value="">Select Your Country First</option>');
             $('#village').html('<option value="">Select Your State First</option>'); 
-			 $('#villagedetail').html('<option value="">Select Your State First</option>'); 
+			 $('#villagedetail').html('<option value="">Select Your village First</option>'); 
         }
     });
     $('#tehsil').on('change',function(){
@@ -46,11 +47,12 @@ $(document).ready(function(){
                 data:'state_id='+stateID,
                 success:function(html){
                     $('#village').html(html);
+					 $('#villagedetail').html('<option value="">Select Your village First</option>');
                 }
             }); 
         }else{
-            $('#village').html('<option value="">Select Your State First</option>'); 
-						 $('#villagedetail').html('<option value="">Select Your State First</option>'); 
+            $('#village').html('<option value="">Select Your village First</option>'); 
+						 $('#villagedetail').html('<option value="">Select Your villagedetail First</option>'); 
         }
     });
 	
@@ -70,6 +72,26 @@ $(document).ready(function(){
         }
     });
 	
+	
+	  $('#filter').on('change',function(){
+	          var countryID = $(this).val();
+	    var stateID = $(this).val();
+        var cityID = $(this).val();
+        if(filter_id){
+            $.ajax({
+                type:'POST',
+                url:'ajaxData.php',
+                data:'filter_id'	,
+                success:function(html){
+                    $('#filter_id').html(html);
+                }
+            }); 
+        }else{
+            $('#villagedetail').html('<option value="">Select Your State First</option>'); 
+        }
+    });
+	
+	
 });
 
 
@@ -86,7 +108,7 @@ $( document ).ready(function() {
 
 </script>
 
-
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>
 
 
 
@@ -123,7 +145,7 @@ ul{	list-style: none;}
 #myboxid {
     border-right: 2px solid #bbb;
 	    margin-bottom: 0px;
-		    border-bottom: 2px solid #bbb;
+		   <!--  border-bottom: 2px solid #bbb; -->
 }
 
 li p.halfspace {
@@ -214,6 +236,7 @@ font-weight:bold;}
     margin-bottom: -10px;
 }
 .pad_10{padding-top:10px; padding-bottom-10px;}
+.padright_10{padding-right:10px;}
 tr.bg-success.text-white {
     background: #f0ffe1;
 }
@@ -235,6 +258,12 @@ td.bg-dark-success.center {
 .lightorangcolr{background: #ffe79b;}
 .lightgreecol{background:#ccff66}
 .extracol{background:#ccff99}
+.floatcls{float:left}
+.floatright{float:right}
+
+.new_tscls  {
+  overflow-wrap: break-word;
+}
   </style>
 
  <div class="wrapper">
@@ -247,8 +276,15 @@ td.bg-dark-success.center {
 	$query = $db->query("SELECT * FROM countries WHERE status = 1 ORDER BY country_name ASC");
 	$rowCount = $query->num_rows;
 	?>
-	<form action="" method="post">
+	<form action="" method="post" enctype="multipart/form-data">
 	<ul>
+	
+	<li> 
+	
+	
+	
+	</li>
+	
 		<li><select name="subdivision" id="country" type="button" class="btn btn-primary btn-lg btn-block">
 			<option value="">Select Your subdivision</option>
 			<?php
@@ -262,14 +298,17 @@ td.bg-dark-success.center {
 			?>
 		</select></li>
 		<li><select name="tehsil" id="tehsil" type="button" class="btn btn-primary btn-lg btn-block">
-			<option value="">Select Your subdivision First</option>
+			<option value="">Select Your subdivision First than tehsil</option>
 		</select></li>
 		<li><select name="village" id="village" type="button" class="btn btn-primary btn-lg btn-block">
-			<option value="">Select Your subdivision First</option>
+			<option value="">Select Your subdivision First than village </option>
 		</select></li>
+	<!-- 	<li><select name="filter" id="filter_id" type="button" class="btn btn-primary btn-lg btn-block">
+			<option value="">submit</option>
+		</select></li> -->
 		
 		
-		<li>	<button class="btn btn-primary" type="submit" name="filter">search</button></li>
+	 <li>	<button class="btn btn-primary" value="submit"  type="submit" id="filter" name="filter">Submit</button></li> 
 
 		
 
@@ -280,7 +319,11 @@ td.bg-dark-success.center {
 		</form>
 		
 	</div>
-	
+
+
+
+
+
 	
 	<div class="my">
 	
@@ -311,7 +354,6 @@ td.bg-dark-success.center {
 			
 				{				
 				
-				
     
     if(!empty($_POST['village'])) {
         $selected = $_POST['village'];
@@ -319,7 +361,8 @@ td.bg-dark-success.center {
     
 
 						$village =$_REQUEST['village'];
-					
+									  
+
 				
 					
 					$query=mysqli_query($db, "SELECT * FROM `village_master` WHERE NVCODE =$village") or die(mysqli_error());
@@ -342,36 +385,62 @@ td.bg-dark-success.center {
 		
 		 <div class="col-md-3 panel" id="myboxid">
 		 <ul class="myboxborder">
-		<li> <p><a href="#" target="_blank">SARPANCH</a></p></li>
-		<li> <p>GRAM SACHIV</p></li>
-		 <li><p>J.E.</p></li>
-		 <li><p class="float_left w_200">PATWARI</p>
-		  <p class="float_right">PATWARI</p></li>
+		<li> <p><a href="#" target="_blank" class="">SARPANCH</a><span class="displinli floatright padright_10"><?php echo $fetch['SARPANCH'];?> </span></p></li>
+		<li> <p>GRAM SACHIV<span class=" displinli floatright padright_10"><?php echo $fetch['GRAMSACHIV'];?> </span></p></li>
+		 <li><p>J.E.<span class=" displinli floatright padright_10"><?php echo $fetch['JE'];?> </span></p></li>
+		  <li><p class="float_left ">PATWARI<span class=" displinli floatright padright_10"><?php echo $fetch['PATWARI'];?> </span></p>
+		  </li>
+		  <li><p>PATWARI M.<span class=" displinli floatright padright_10"><?php echo $fetch['PMOBILE'];?> </span></p></li>
+		
+		  
 		 </ul>
 		 
 <!--   srno: <label><?php //echo $fetch['srno'];?></label> -->
   
   </div>
-  <div class="col-md-3 panel" id="myboxid">
- <a href="#" class="center">Google Map:  </a><span class="hideOverflow"><a href="'. $fetch['GMAP'] .'" target="_blank"><?php echo $fetch['GMAP'];?></a></span></div>
+  <div class="col-md-3 panel center" id="myboxid">
+   
+   <a class="center pad_10">Google Map:  </a>
+   
+   <span class="new_tscls pad_10"><a class="pad_10" href="<?php echo $fetch['GMAP'];?>" target="_blank"><?php echo $fetch['GMAP'];?></a></span>
+   
+ 
+   
+</a></span>
+<h4 class="center ">Longitude & Latitude:  <span class="new_tscls pad_10"></h4><?php echo $fetch['LOCATION'];?></span>
+  
+ </div>
+  
   
   <div class="col-md-3 panel" id="myboxid"> 
     <label class="center">HOW TO REACHForm H.Q.<?php echo $fetch['PCODE'];?></label>
-	 <ul class="float-left">
+	
+	
+	 <ul class="myhow">
+		<li> <p>District<span class="displinli floatright padright_10"> Kurukshetra</span></p></li>
+		<li> <p>SUBDIVISION<span class=" displinli floatright padright_10"><?php echo $fetch['SUBDIVISION'];?> </span></p></li>
+		 <li><p>TEHSIL<span class=" displinli floatright padright_10"><?php echo $fetch['TEHSIL'];?> </span></p></li>
+		  
 		
-		<li> DISTRICT</li>
-	
-		 <li>SUB DIVISION</li>
-		 <li>TEHSIL</li>
-	
+		  
 		 </ul>
+<!-- 	 <ul class="float-left">
+		 <li><p>District<span class=" displinli floatright padright_10">Kurukshetra </span></p></li>
+		 <li><p>SUBDIVISION<span class=" displinli floatright padright_10"> <?php //echo $fetch['SUBDIVISION'];?> </span></p></li>
+		 <li><p>TEHSIL<span class=" displinli floatright padright_10"> <?php //echo $fetch['TEHSIL'];?> </span></p></li>
+		
+	
+		
+	
+		 </ul> -->
 	
 	</div>
 	
 	  <div class="col-md-3 panel" id="myboxid"> 
 	  <div class="row">
 	  <div class="col-md-12">
-    <label class="floatright"><a href="#" >TSC</a></label></div>
+   <p class="center pad_10">TSC</p>
+    <label class="floatright new_tscls"><a href="<?php echo $fetch['TSC'];?>" target="_blank"><?php echo $fetch['TSC'];?></a></label></div>
 		  <div class="col-md-12">
 	<ul class="floatright">
 	<li><img src="css/images/vis.003.png" class="floatright pdcls10"></li>
@@ -399,6 +468,10 @@ td.bg-dark-success.center {
 </div>
 </div>
 </div>
+
+
+
+
 	
 		<form>
 			<tbody>
@@ -408,13 +481,13 @@ td.bg-dark-success.center {
 			<th colspan="2" class="bg-dark-success"> Cattles</th>
                   <tr class="bg-success-light text-white">
                     <th scope="row">DISTRICT</th>
-                    <td>Ambala</td>
+                    <td>Kurukshetra</td>
                     <td ><span class="bold">Total Area</span> <br>
 					Acre Karnal Marle<br> (Hectare)</td>
                     <td><?php echo $fetch['SAREA'];?></td>
-                    <td> <i class="fa fa-train" aria-hidden="true"></i> Railway Station</td>
+                    <td> <i class="fa fa-train" aria-hidden="true"></i> Railway Station : <?php echo $fetch['RAILWAYSTATION']?></td>
                     <td> <i class="fa fa-twitter" aria-hidden="true"></i>Buffalos</td>
-                    <td>313</td>
+                    <td><?php echo $fetch['BUFFALOS'];?></td>
                    
                   </tr>
 				  
@@ -423,10 +496,10 @@ td.bg-dark-success.center {
                     <td><?php echo $fetch['TEHSIL'];?></td>
                      <td ><span>Cultivable</span> <br>
 					Acre Karnal Marle<br> (Hectare)</td>
-                    <td></td>
-                    <td> <i class="fa fa-bus" aria-hidden="true"></i> Bus Stand</i></td>
+                    <td><?php echo $fetch['CULTIVATIVEAREA']?></td>
+                    <td> <i class="fa fa-bus" aria-hidden="true"></i> Bus Stand : <?php echo $fetch['BUSSTAND']?></td>
                     <td> <i class="fa fa-twitter" aria-hidden="true"></i> Cow</i></td>
-					 <td>13</td>
+					 <td><?php echo $fetch['COWS'];?></td>
                   </tr>
                   <tr class="bg-success-light text-white">
                     <th scope="row">TEHSIL</th>
@@ -434,8 +507,8 @@ td.bg-dark-success.center {
                                         <td ><span>Non-Cultivable</span> <br>
 					Acre Karnal Marle<br> (Hectare)</td>
                    
-                    <td>400-4-7<br>(162.09)</td>
-                    <td><i class="fa fa-bus" aria-hidden="true"></i> Police<br>Station</td>
+                   <td><?php echo $fetch['NONCULTIVATIVEAREA']?></td>
+                    <td><i class="fa fa-bus" aria-hidden="true"></i> Police Station : <?php echo $fetch['POLICESTATION']?></td>
 					  <td></td>
                     <td></td>
                    
@@ -446,48 +519,48 @@ td.bg-dark-success.center {
                    <td> <i class="fa fa-bus" aria-hidden="true"></i><br> Population</i></td>
                     <td></td>
 
-                    <td> <i class="fa fa-bus" aria-hidden="true"></i> Police <br> Post</td>
+                    <td> <i class="fa fa-bus" aria-hidden="true"></i> Police Post  : <?php echo $fetch['POLICEPOST']?></td>
 					  <td><i class="fa fa-bus" aria-hidden="true"></i> Dog</td>
-                    <td>19</td>
+                    <td><?php echo $fetch['DOG']?></td>
                   </tr>
                 
 				   <tr class="bg-success-light text-white">
                     <th scope="row">kanungo Circle</th>
                     <td><?php echo $fetch['TEHSIL'];?> - 1</td>
                     <td>Male</td>
-                    <td></td>
-                    <td><i class="fa fa-bus" aria-hidden="true"></i> Post Office</td>
-					  <td><i class="fa fa-bus" aria-hidden="true"></i> Pigs</td>
-                    <td>0</td>
+                    <td><?php echo $fetch['MALE'];?></td>
+                    <td><i class="fa fa-bus" aria-hidden="true"></i> Post Office : <?php echo $fetch['POSTOFFICE']?></td>
+					  <td><i class="fa fa-bus" aria-hidden="true"></i> Pigs: </td>
+                    <td><?php echo $fetch['PIGS']?></td>
                   </tr>
 				   <tr class="bg-success text-white">
                     <th scope="row">Patwar Circle</th>
                     <td>Pipli</td>
                     <td>Female</td>
-                    <td></td>
-                    <td><i class="fa fa-bus" aria-hidden="true"></i> Bank</td>
-					    <td><i class="fa fa-bus" aria-hidden="true"></i> Chamels</td>
-                    <td>0</td>
+                    <td><?php echo $fetch['FEMALE'];?></td>
+                    <td><i class="fa fa-bus" aria-hidden="true"></i> Bank : <?php echo $fetch['BANK']?></td>
+					    <td><i class="fa fa-bus" aria-hidden="true"></i> Chamels : </td>
+                    <td><?php echo $fetch['CAMELS']?></td>
                   </tr>
                  <tr class="bg-success-light text-white">
                     <th scope="row">Block</th>
-                    <td><?php echo $fetch['TEHSIL'];?></td>
+                    <td><?php echo $fetch['BLOCK'];?></td>
                     <td></td>
 					 <td></td>
-                    <td><i class="fa fa-bus" aria-hidden="true"></i>ATM</td>
+                    <td><i class="fa fa-bus" aria-hidden="true"></i>ATM : <?php echo $fetch['ATM']?></td>
                    
-					   <td><i class="fa fa-bus" aria-hidden="true"></i> Rabbits</td>
-                    <td>0</td>
+					   <td><i class="fa fa-bus" aria-hidden="true"></i> Rabbits:</td>
+                    <td><?php echo $fetch['RABBITS']?></td>
                   </tr>
 				   <tr class="bg-success text-white">
                     <th scope="row">Gram <br> Panchayat</th>
-                    <td>Devidapura</td>
+                    <td><?php echo $fetch['GRAMPANCHAYAT']?></td>
                     <td></td>
 					<td></td>
-                    <td><i class="fa fa-bus" aria-hidden="true"></i> MANDI</td>
+                    <td><i class="fa fa-bus" aria-hidden="true"></i> MANDI  : <?php echo $fetch['MANDI']?></td>
                     
-					   <td><i class="fa fa-bus" aria-hidden="true"></i> Donkeis</td>
-                    <td>0</td>
+					   <td><i class="fa fa-bus" aria-hidden="true"></i> Donkeis :</td>
+                    <td><?php echo $fetch['DONKEY']?></td>
                   </tr>
                  <tr class="bg-success-light text-white">
                     <th scope="row">Parliament <br> Consitituency</th>
@@ -495,46 +568,48 @@ td.bg-dark-success.center {
                     <td></td>
                     <td></td>
 					 <td></td>
-                    <td><i class="fa fa-bus" aria-hidden="true"></i> Mules</td>
-                    <td>0</td>
+                    <td><i class="fa fa-bus" aria-hidden="true"></i> Mules:</td>
+                    <td><?php echo $fetch['MULES']?></td>
                   </tr> <tr class="bg-success text-white">
                     <th scope="row">Assembly <br> Consitituency</th>
-                    <td></td>
-                     <td><i class="fa fa-bus" aria-hidden="true"></i> Voters</td>
-                    <td></td>
+                    <td><?php echo $fetch['ASSEMBLYCONST'] ?></td>
+                     <td><i class="fa fa-bus" aria-hidden="true"></i> Voters:</td>
+                    <td><?php echo $fetch['VOTERS']?></td>
 					 <td></td>
-                    <td><i class="fa fa-bus" aria-hidden="true"></i> Hores</td>
-                    <td>1</td>
+                    <td><i class="fa fa-bus" aria-hidden="true"></i> Hores :</td>
+                    <td><?php echo $fetch['HORSES']?></td>
                   </tr>
                  <tr class="bg-success-light text-white">
                     <th scope="row">Vaterinary <br> Hospital</th>
-                    <td></td>
-                      <td> <i class="fa fa-bus" aria-hidden="true"></i><br>Panchayatghar</td>
+                    <td><?php echo $fetch['VATHOSPITAL']?></td>
+                      <td> <i class="fa fa-bus" aria-hidden="true"></i> Panchayatghar</td>
 					   
-					 <td></td>
+					 <td><?php echo $fetch['PANCHAYATGHAR']?></td>
 					 <td class="lightorangcolr"></td>
-                     <td><i class="fa fa-bus" aria-hidden="true"></i> Goats</td>
-                    <td>0</td>
-                  </tr> <tr class="bg-success text-white">
+                     <td><i class="fa fa-bus" aria-hidden="true"></i> Goats : </td>
+                    <td><?php echo $fetch['SHEEP']?></td>
+                  </tr> 
+				  
+				  <tr class="bg-success text-white">
                     <th scope="row">Health Sub-center</th>
                     <td>Ratgal</td>
                     <td> <i class="fa fa-bus" aria-hidden="true"></i>AWCs</td>
                     <td>3</td>
                      <td colspan="2" class="center lightgreecol" ><a href="#" target="_blank" class="underline">Public Health</a></td>
-					 <td><i class="fa fa-bus" aria-hidden="true"></i> Sheepes</td>
-                    <td>0</td>
+					 <td><i class="fa fa-bus" aria-hidden="true"></i> Sheepes : </td>
+                    <td><?php echo $fetch['SHEEP']?></td>
                   </tr>
                  <tr class="bg-success-light text-white">
-                    <th scope="row">PHC</th>
-                    <td>Pipli</td>
+                    <th scope="row">PHC : </th>
+                    <td><?php echo $fetch['PHC']?></td>
                      <td> <i class="fa fa-bus" aria-hidden="true"></i>Talab</td>
                     <td></td>
                         <td colspan="2"  class="center pinkcolr"><a href="#" target="_blank" class="underline">Voters List</a></td>
 					  <td></td>
                     <td></td>
                   </tr> <tr class="bg-success text-white">
-                    <th scope="row">CHC</th>
-                    <td>Mathana</td>
+                    <th scope="row">CHC : </th>
+                    <td><?php echo $fetch['CHC']?></td>
                    <td> <i class="fa fa-bus" aria-hidden="true"></i>Stadium</td>
                     <td></td>
                         <td colspan="2" class="center restcolr"><a href="#" target="_blank" class="underline">Pensioners List</a></td>
@@ -543,7 +618,7 @@ td.bg-dark-success.center {
                   </tr>
                  <tr class="bg-success-light text-white">
                     <th scope="row">Hospital</th>
-                    <td></td>
+                    <td><?php echo $fetch['HOSPITAL']?></td>
   <td> <i class="fa fa-bus" aria-hidden="true"></i>Chaupals</td>
                     <td>0</td>
                     <td colspan="2"  class="bg-dark-success center colwhite"> INDIRA GANDHI<br>AWAAS YOJANA</td>
