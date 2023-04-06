@@ -63,6 +63,22 @@ $(document).ready(function(){
         }
     });
 	
+	  $('#submitdetail').on('change',function(){
+        var submitID = $(this).val();
+        if(submitID){
+            $.ajax({
+                type:'POST',
+                url:'ajaxData.php',
+                data:'submit_id='+submitID,
+                success:function(html){
+                    $('#submitdetail').html(html);
+                }
+            }); 
+        }else{
+            $('#submitdetail').html('<option value="">Select Your State First</option>'); 
+        }
+    });
+	
 });
 </script>
 
@@ -120,8 +136,12 @@ ul{	list-style: none;}
 		
 		
 		
-		<li><select name="villagedetail" id="villagedetail" type="button" class="btn btn-primary btn-lg btn-block">
-			<option value="" selected="selected">Select Your subdivision First</option>
+		<!-- <li><select name="villagedetail" id="villagedetail" type="button" class="btn btn-primary btn-lg btn-block"><option value="" selected="selected">Select Your subdivision First</option>
+			
+		</select></li>-->
+		
+			<li><select name="submitdetail" id="submitdetail" type="button" class="btn btn-primary btn-lg btn-block">
+			<option value="" selected="selected">Submit</option>
 			
 		</select></li>
 		
@@ -269,6 +289,8 @@ Select City : <select id="villagedetail">
 
 </div>
 
+
+
 <script>
 $(document).ready (function(){
 $.ajax({
@@ -283,6 +305,10 @@ $("#villagedetail").append("<option>" + value.product_name + "</options>");
 }
 });
 });
+
+
+
+//https://www.youtube.com/watch?v=S8M7V5mdSdI&t=605s
 </script>
 </body>
 </html>
