@@ -32,7 +32,7 @@ $(document).ready(function(){
                 success:function(html){
 				
                     $('#tehsil').html(html);
-                    $('#village').html('<option value="">Select Your State First</option>'); 
+                    $('#village').html('<option value="">Select Your tehsil First</option>'); 
 					 $('#villagedetail').html('<option value="">Select Your village First</option>'); 
 					 	console.log(data);	
                 }
@@ -310,10 +310,10 @@ td.bg-dark-success.center {
 			?>
 		</select></li>
 		<li><h3>Select Tehsil  </h3><select name="tehsil" id="tehsil" type="button" class="btn btn-primary btn-lg btn-block">
-			<option value="">Select Your subdivision First than tehsil</option>
+			<option value="">Select Your tehsil</option>
 		</select></li>
 		<li><h3>Select Village  </h3><select name="village" id="village" type="button" class="btn btn-primary btn-lg btn-block">
-			<option value="">Select Your subdivision First than village </option>
+			<option value="">Select Your village </option>
 		</select></li>
 	<!-- 	<li><select name="filter" id="filter_id" type="button" class="btn btn-primary btn-lg btn-block">
 			<option value="">submit</option>

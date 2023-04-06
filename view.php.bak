@@ -319,7 +319,7 @@ td.bg-dark-success.center {
 				<thead class="alert-info">
 				
 				
-				<p><tr><h1 align="center" class="alert-info">All Details Show</h1> </tr></p>
+				<p><tr><h1 align="center" class="alert-info">Village Information System</h1> </tr></p>
 					<!-- <th>NVCODE</th>
 					<th>PCODE</th>
 					<th>VILLAGENAME</th>
@@ -394,7 +394,7 @@ td.bg-dark-success.center {
 		 </ul>
 		 </div>
 		 <div class="col-md-3">
-		 <h3><img src="<?php echo $fetch['PATWIMAGE']?>" width=100px height="100px"></h3></div>
+		 <h3><img src="./dynamic/sarpanch/<?php echo $fetch['NVCODE']?>.JPG" width="100px" height="100px"></h3></div>
 		 </div>
 		 
 <!--   srno: <label><?php //echo $fetch['srno'];?></label> -->
@@ -402,14 +402,17 @@ td.bg-dark-success.center {
   </div>
   <div class="col-md-3 panel center" id="myboxid">
    
-   <a class="center pad_10">Google Map:  </a>
+  <h3> <a class="center pad_10" href="<?php echo $fetch['GMAP'];?>">Google Map  </a></h3>
    
-   <span class="new_tscls pad_10"><a class="pad_10" href="<?php echo $fetch['GMAP'];?>" target="_blank"><?php echo $fetch['GMAP'];?></a></span>
+   <span class="new_tscls pad_10">
+  <!--   <a class="pad_10" href="<?php //echo $fetch['GMAP'];?>" target="_blank">Google Map: </a> -->
+   
+   </span>
    
  
-   
-</a></span>
-<h4 class="center ">Longitude & Latitude:  <span class="new_tscls pad_10"></h4><?php echo $fetch['LOCATION'];?></span>
+    <h3> <div class="center pad_10" >Longitude & Latitude:  </div></h3>
+
+<h4 class="center"> <span class="new_tscls pad_10"></h4><?php echo $fetch['LOCATION'];?></span>
   
  </div>
   
