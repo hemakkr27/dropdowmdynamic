@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Dynamic Selection Box</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<link type="text/css" rel="stylesheet" href="css/style.css">
+	
+<!-- 	<link type="text/css" rel="stylesheet" href="css/bootstrap/css/bootstrap.css">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap/css/bootstrap.min.css"> -->
+
+	<script src="css/jquery.min.js"></script>
+	
+	
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	
+	
+	
+<script type="text/javascript">
+$(document).ready(function(){
+
+    $('#country').on('change',function(){
+	
+        var countryID = $(this).val();
+        if(countryID){
+            $.ajax({
+                type:'POST',
+                url:'ajaxData.php',
+                data:'country_id='+countryID,
+				
+                success:function(html){
+				
+                    $('#tehsil').html(html);
+                    $('#village').html('<option value="">Select Your State First</option>'); 
+					 $('#villagedetail').html('<option value="">Select Your village First</option>'); 
+					 	console.log(data);	
+                }
+            }); 
+        }else{
+            $('#tehsil').html('<option value="">Select Your Country First</option>');
+            $('#village').html('<option value="">Select Your State First</option>'); 
+			 $('#villagedetail').html('<option value="">Select Your village First</option>'); 
+        }
+    });
+    $('#tehsil').on('change',function(){
+        var stateID = $(this).val();
+        if(stateID){
+            $.ajax({
+                type:'POST',
+                url:'ajaxData.php',
+                data:'state_id='+stateID,
+                success:function(html){
+                    $('#village').html(html);
+					 $('#villagedetail').html('<option value="">Select Your village First</option>');
+					 	console.log(data);	
+                }
+            }); 
+        }else{
+            $('#village').html('<option value="">Select Your village First</option>'); 
+						 $('#villagedetail').html('<option value="">Select Your villagedetail First</option>'); 
+        }
+    });
+	
+	  $('#village').on('change',function(){
+        var cityID = $(this).val();
+        if(cityID){
+            $.ajax({
+                type:'POST',
+                url:'ajaxData.php',
+                data:'city_id='+cityID,
+                success:function(html){
+                    $('#villagedetail').html(html);
+						console.log(data);
+                }
+            }); 
+        }else{
+            $('#villagedetail').html('<option value="">Select Your State First</option>'); 
+        }
+    });
+	
+	
+	  $('#filter').on('load',function(){
+	          var countryID = $(this).val();
+	    var stateID = $(this).val();
+        var cityID = $(this).val();
+        if(filter_id){
+            $.ajax({
+                type:'POST',
+                url:'ajaxData.php',
+                data:'filter_id',
+                success:function(html){
+                    $('#filter_id').html(html);
+					
+                }
+            }); 
+        }else{
+            $('#villagedetail').html('<option value="">Select Your State First</option>'); 
+        }
+    });
+	
+	
+});
+
+
+
+$( document ).ready(function() {
+    var heights = $(".panel").map(function() {
+        return $(this).height();
+    }).get(),
+
+    maxHeight = Math.max.apply(null, heights);
+
+    $(".panel").height(maxHeight);
+});
+
+</script>
+
+
+
+
+
+
+</head>
+<body>
+
+  <style>
+
+
+
+  @media (max-width: 1000px) {
+ul.subtehvil h3 {
+    font-size: 19px;
+}
+
+
+#myboxid {
+    border-right: 0px transparent !important;
+    margin-bottom: 0px;
+	  
+  
+}
+
+  }
+  
+  @media (min-width: 768px) and (max-width: 1012px) {
+	  h3.logcls {
+    font-size: 22px 
+}
+	  
+
+}
+  
+
+
+  @media (max-width: 768px) {
+ul.subtehvil h3 {
+    font-size: 18px;
+}
+
+.myimagcls img {
+    width: auto !important;
+   
+}
+.myimagcls {
+    text-align: center;
+}
+ul.myboxborder {
+    padding: 7px;
+}
+.panel {
+    height: auto !important;
+}
+
+
+  }
+  @media (max-width: 600px) {
+ li.flotlefty {
+    width: 100% !important;
+}
+ul.subtehvil h3 {
+    font-size: 27px;
+}
+h3.logcls {
+    font-size: 20px;
+}
+ul.subtehvil {
+    display: inline-block;
+}
+.panel {
+    height: auto !important;
+}
+
+  }
+
+
+  @media (max-width: 420px) {
+ul.subtehvil h3 {
+    font-size: 16px;
+}
+.my h1 {
+    margin: 0px;
+    font-size: 28px;
+    
+}
+
+  }
+
+.my h1 {
+  
+    padding: 10px;
+}
+.bgsuccess {
+
+    text-align: center;
+}
+.bglight {
+
+    text-align: center;
+}
+
+}
+
+h1.alert-info {
+    margin-bottom: -10px;
+}
+  .subtehvil li h3,h4{  float:left;
+ 
+   padding:11px;}
+   
+   
+ul{	list-style: none;}
+.my_select-boxes li {
+   float:left;
+ 
+   padding:11px;
+  
+}
+
+.my_select-boxes {
+    width: 100%;
+    display: inline-block;
+}
+
+
+.myvillcenter {
+    /* text-align: center; */
+    background-color: #0099cc;
+    padding-left: 48px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+	    color: #fff;
+}
+
+#myboxid {
+    border-right: 2px solid #bbb;
+	    margin-bottom: 0px;
+		   <!--  border-bottom: 2px solid #bbb; -->
+}
+
+li p.halfspace {
+    float: left;
+    width: 50%;
+}
+label.mymapspac p
+{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.hideOverflow
+{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    width:100%;
+    display:block;
+}
+div#myboxid ul {
+    margin: 0 auto;
+   
+    margin: 20px;
+}
+.myboxborder {
+    margin: 0 auto;
+    border: 1px solid;
+    margin: 20px;
+}
+.w_200{width: 200px;}
+.float_left.w_200 {
+    float: left;
+}
+.float_right.w_200 {
+    float: right;
+}
+
+
+
+
+.float-left li {
+    float: left;
+    padding: 20px;
+}
+.center {
+    text-align: center;
+    display: block;
+}
+#myboxid a {
+    text-decoration: underline;
+}
+label.floatright {
+    float: right;
+    padding-right: 20px;
+    padding-top: 20px;
+}
+.floatright li {
+    float: right;
+}
+.pdcls10{padding:10px;}
+
+th.bg-dark-success {
+    background-color: #8ed27d;
+	font-weight: bold;
+    font-size: 24px;
+    font-style: italic;
+}
+.bg-success-light {
+    background-color: #ccff99;
+}
+.bold{fontsize:22px;
+font-weight:bold;}
+.my {
+    margin: 30px;
+
+}
+.bgyello {
+    background-color: #ffff99;
+    border: 2px solid #bbb;
+ 
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.underline {
+    text-decoration: underline;
+}
+<!-- #myid { margin-bottom: -10px;} -->
+.pad_10{padding-top:10px; padding-bottom-10px;}
+.padright_10{padding-right:10px;}
+tr.bg-success.text-white {
+    background: #f0ffe1;
+}
+table.table.table-responsive.table-bordered.myallbox tr th {
+    border: 0px;
+}
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+    border: 0px solid #ddd;
+}
+td.bg-dark-success.center {
+    background: #5ebb00;
+}
+.displinli {
+    display: inline-block;
+}
+.colwhite{    color: white;}
+.restcolr{background: #ff9933;}
+.pinkcolr{background: #ff99ff;}
+.lightorangcolr{background: #ffe79b;}
+.lightgreecol{background:#ccff66}
+.extracol{background:#ccff99}
+.floatcls{float:left}
+.floatright{float:right}
+
+.new_tscls  {
+  overflow-wrap: break-word;
+}
+
+.hide {
+  display: none;
+}
+
+.redcls {
+    color: red;
+}
+
+ul.myhow {
+    font-weight: bold;
+}
+ul.subtehvil h3 {
+   <!-- margin: 0px; -->
+    display: block;
+}
+h1.myvillcenter {
+   <!-- margin: 0px; -->
+    display: block;
+}
+ul.myhow {
+    padding: 0px;
+}
+
+nav > .nav.nav-tabs{
+
+  border: none;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+
+}
+nav > div a.nav-item.nav-link,
+nav > div a.nav-item.nav-link.active
+{
+  border: none;
+    padding: 18px 25px;
+    color:#fff;
+    background:#272e38;
+    border-radius:0;
+}
+
+nav > div a.nav-item.nav-link.active:after
+ {
+  content: "";
+  position: relative;
+  bottom: -60px;
+  left: -10%;
+  border: 15px solid transparent;
+  border-top-color: #e74c3c ;
+}
+.tab-content{
+  background: #fdfdfd;
+    line-height: 25px;
+    border: 1px solid #ddd;
+    border-top:5px solid #e74c3c;
+    border-bottom:5px solid #e74c3c;
+    padding:30px 25px;
+}
+
+nav > div a.nav-item.nav-link:hover,
+nav > div a.nav-item.nav-link:focus
+{
+  border: none;
+    background: #e74c3c;
+    color:#fff;
+    border-radius:0;
+    transition:background 0.20s linear;
+}
+.mytabcls{display:inline}
+
+li.flotlefty {
+    float: left;
+    width: 50%;
+}
+.bglight {
+    background-color: #ccff99;
+	padding: 10px;
+}
+.bgsuccess {
+    background: #f0ffe1;
+	padding: 10px;
+}
+ul.newclstb {
+    padding: 0;
+}
+
+li.florange.orange {
+    width: 100%;
+    background: #ffe79b;
+    text-align: center;
+    padding: 10px;
+}
+.lightgreecol {
+    background: #ccff66;
+	 width: 100%;
+  
+    text-align: center;
+    padding: 10px;
+}
+
+.restcolr {
+    background: #ff9933;
+	 width: 100%;
+  
+    text-align: center;
+    padding: 10px;
+}
+.pinkcolr {
+    background: #ff99ff;
+	 width: 100%;
+  
+    text-align: center;
+    padding: 10px;
+}
+
+.darkgr {
+    background: #5ebb00;
+	 width: 100%;
+  
+    text-align: center;
+    padding: 10px;
+}
+.myimagcls {
+    margin-top: 22px;
+	  <!--  text-align: center;  -->
+}
+
+.myimagcls img {
+    width: 100%;
+}
+ul.myboxborder li {
+    font-weight: bold;
+}
+ul.myboxborder span {
+    font-weight: normal;
+}
+
+  </style>
+  
+  
+  
+
+  
+
+ <div class="wrapper">
+
+<div class="my_container">
+
+	<div class="my_select-boxes">
+	<?php
+	include('dbConfig.php');
+	$query = $db->query("SELECT * FROM countries WHERE status = 1 ORDER BY country_name ASC");
+	$rowCount = $query->num_rows;
+	?>
+	
+		
+	</div>
+
+
+
+
+	
+	<div class="my">
+	   <?php
+
+ 
+  echo '<a class="btn btn-primary" href="index.php">Go to Home Page</a>';
+?>
+		<table class="table table-responsive table-bordered myallbox">
+				<thead class="alert-info">
+				
+				
+				<p><tr><h1 align="center" class="alert-info">Village Information System</h1> </tr></p>
+					<!-- <th>NVCODE</th>
+					<th>PCODE</th>
+					<th>VILLAGENAME</th>
+					<th>GRAMPANCHAYAT</th>
+					<th>GMAP</th>
+					<th>LOCATION</th> -->
+				</thead>
+				
+		
+
+				<tbody class="alert-info mytableboxbody">
+				
+
+				
+					<?php 	
+					
+
+			if(isset($_POST['filter']))
+			
+			
+				{				
+				
+    
+    if(!empty($_POST['village'])) {
+        $selected = $_POST['village'];
+        //echo 'You have chosen: ' . $selected;
+    
+
+						$village =$_REQUEST['village'];
+									  
+
+				
+					
+					$query=mysqli_query($db, "SELECT * FROM `village_master` WHERE NVCODE =$village") or die(mysqli_error());
+		while($fetch=mysqli_fetch_array($query)){
+		
+		?>
+		<div class="row">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+		<ul class="subtehvil">
+	<li><h3 class="redcls">Sub Division : </h3><h3><?php echo $fetch['SUBDIVISION']?></h3>	</li>
+	<li><h3 class="redcls"> Tehsil : </h3><h3><?php echo $fetch['TEHSIL']?></h3>	</li>
+<li><h3 class="redcls"> Village Name : </h3><h3><?php echo $fetch['VILLAGENAME']?></h3></li>
+		</ul>
+		</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+		<div class="" id="myid">
+		<h1 class="myvillcenter"><?php	echo $fetch['VILLAGENAME'] ?></h1>
+		
+		
+
+		
+			</div>
+		</div>
+		</div>
+							
+		
+
+<div class="row bgyello">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+            <div class="row">
+              	 <div class="col-md-9 col-xs-12 panel col-sm-12" id="myboxid">
+		
+		  <div class="row boxclsnew">
+		  <div class="col-md-10 col-sm-12 col-xs-12 width100">
+		 <ul class="myboxborder">
+		<li> <p><a href="#" target="_blank" class="">SARPANCH</a><span class="displinli floatright padright_10"><?php echo $fetch['SARPANCH'];?> </span></p></li>
+		<li> <p>GRAM SACHIV<span class=" displinli floatright padright_10"><?php echo $fetch['GRAMSACHIV'];?> </span></p></li>
+		 <li><p>J.E.<span class=" displinli floatright padright_10"><?php echo $fetch['JE'];?> </span></p></li>
+		  <li><p class="float_left ">PATWARI<span class=" displinli floatright padright_10"><?php echo $fetch['PATWARI'];?> </span></p>
+		  </li>
+		  <li><p>PATWARI M.<span class=" displinli floatright padright_10"><?php echo $fetch['PMOBILE'];?> </span></p></li>
+		
+		  
+		 </ul>
+		 </div>
+		 <div class="col-md-2 col-sm-12 col-xs-12 width100">
+		 <div class="myimagcls">
+		 <img src="http://localhost/dynamic/sarpanch/<?php echo $fetch['NVCODE']?>.JPG" width="100px" height="100px"></div>
+		 </div>
+		 
+		   </div>
+<!--   srno: <label><?php //echo $fetch['srno'];?></label> -->
+  
+  </div>
+  
+  
+  
+  
+  
+   <div class="col-md-3 panel col-xs-12 col-sm-12 center" id="myboxid">
+   
+  <h3> <a class="center pad_10" href="<?php echo $fetch['GMAP'];?>">Google Map  </a></h3>
+   
+   <span class="new_tscls pad_10">
+  <!--   <a class="pad_10" href="<?php //echo $fetch['GMAP'];?>" target="_blank">Google Map: </a> -->
+   
+   <h3 class="logcls"> <div class="center pad_10" >Longitude & Latitude:  </div></h3>
+   
+   <h4 class="center"> <span class="new_tscls pad_10"></h4><?php echo $fetch['LOCATION'];?></span>
+   
+   </span>
+   
+ 
+    
+
+
+  
+ </div>
+  
+            </div>
+        </div>
+        
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+            <div class="row">
+                
+				  <div class="col-md-8 col-xs-12 panel col-sm-6" id="myboxid"> 
+    <label class="center">HOW TO REACH Form H.Q.<?php echo $fetch['PCODE'];?></label>
+	
+	
+	 <ul class="myhow">
+	
+		<li> <p>District<span class="displinli floatright padright_10"> <a href="<?php echo $fetch['HRDISTRICT']?>" target="_blank" class="">Kurukshetra</a></span></p></li>
+		<li> <p>SUBDIVISION<span class="displinli floatright padright_10"> <a href="<?php echo $fetch['HRSUBDIVISION']?>" target="_blank" class=""><?php echo $fetch['SUBDIVISION']?></a></span></p></li>
+		<li> <p>TEHSIL<span class="displinli floatright padright_10"> <a href="<?php echo $fetch['HRTEHSIL']?>" target="_blank" class=""><?php echo $fetch['TEHSIL']?></a></span></p></li>
+		
+		  
+		
+		  
+		 </ul>
+<!-- 	 <ul class="float-left">
+		 <li><p>District<span class=" displinli floatright padright_10">Kurukshetra </span></p></li>
+		 <li><p>SUBDIVISION<span class=" displinli floatright padright_10"> <?php //echo $fetch['SUBDIVISION'];?> </span></p></li>
+		 <li><p>TEHSIL<span class=" displinli floatright padright_10"> <?php //echo $fetch['TEHSIL'];?> </span></p></li>
+		
+	
+		
+	
+		 </ul> -->
+	
+	</div>
+	
+	  <div class="col-md-4 col-xs-12 panel col-sm-6" id="myboxid"> 
+	  <div class="row">
+	  <div class="col-md-12">
+   <p class="center pad_10">TSC</p>
+    <label class="floatright new_tscls"><a href="<?php echo $fetch['TSC'];?>" target="_blank"><?php //echo $fetch['TSC'];?></a></label>
+    
+	
+	</div>
+		  <div class="col-md-12">
+	<ul class="floatright">
+	<li><img src="css/images/vis.003.png" class="floatright pdcls10"></li>
+	<li><img src="css/images/vis.003.png" class="floatright pdcls10"></li>
+	</ul>
+	</div>
+	</div>
+	
+</div>
+				
+				
+				
+            </div>
+        </div>
+	</div>
+
+		
+
+		
+				
+<div class="mytextcls">
+<div class="row pad_10">
+	
+	  <div class="col-md-2 col-sm-3 col-xs-4">
+    <label class="underline"><a href="https://www.jamabandi.nic.in/defaultpages/default.aspx" >Jamabandi</a></label>
+	</div>
+		  <div class="col-md-2 col-sm-3 col-xs-4">
+	
+	  <label class="underline"><a href="https://kurukshetra.gov.in/collector-rate-2022/" >Collector Rate</a></label>
+</div>
+	  <div class="col-md-8 col-sm-6 col-xs-4">
+	 <label class="">Surrounding Villages: </label>
+	<?php echo $fetch['SAREA'];?>
+</div>
+</div>
+</div>
+
+
+<div class="mycls">
+              <div class="row mytabcls">
+                <div class="col-xs-12 ">
+                  <nav>
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Village information</a>
+                      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Statistical Information</a>
+                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Accessibilities</a>
+                      <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Cattles</a>
+                    </div>
+                  </nav>
+                  <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+			<div class="row">
+		<div class="col-md-12">	
+		
+		
+		<ul class="newclstb">
+		<li class="flotlefty bglight">DISTRICT</li><li class="flotrig bglight">	kurukshetra	</li>
+		<li class="flotlefty bgsuccess">SUBDIVISION</li><li class="flotrig bgsuccess">	<?php echo $fetch['SUBDIVISION']?>	</li>
+		<li class="flotlefty bglight">TEHSIL</li><li class="flotrig bglight">	<?php echo $fetch['TEHSIL']?>	</li>
+		<li class="flotlefty bgsuccess">Sub Tehsil</li><li class="flotrig bgsuccess">	<?php echo $fetch['TEHSIL'];?>	</li>
+		<li class="flotlefty bglight">kanungo Circle</li><li class="flotrig bglight">	<?php echo $fetch['TEHSIL'];?>	</li>
+		<li class="flotlefty bgsuccess">Patwar Circle</li><li class="flotrig bgsuccess">	Pipli	</li>
+		<li class="flotlefty bglight">Block</li><li class="flotrig bglight">	<?php echo $fetch['BLOCK'];?></li>	
+		<li class="flotlefty bgsuccess">Gram Panchayat</li><li class="flotrig bgsuccess">	<?php echo $fetch['GRAMPANCHAYAT'];?></li>	
+		<li class="flotlefty bglight">Parliament Consitituency</li><li class="flotrig bglight">Kurukshetra</li>	
+		<li class="flotlefty bgsuccess">Assembly Consitituency</li><li class="flotrig bgsuccess">	<?php echo $fetch['ASSEMBLYCONST'];?></li>	
+		<li class="flotlefty bglight">Vaterinary Hospital</li><li class="flotrig bglight">	<?php echo $fetch['VATHOSPITAL'];?></li>	
+		<li class="flotlefty bgsuccess">Health Sub-center</li><li class="flotrig bgsuccess">	<?php echo $fetch['BLOCK'];?></li>	
+		<li class="flotlefty bglight">PHC :</li><li class="flotrig bglight">	<?php echo $fetch['PHC'];?></li>	
+		<li class="flotlefty bgsuccess">CHC :</li><li class="flotrig bgsuccess">	<?php echo $fetch['CHC'];?></li>	
+		<li class="flotlefty bglight">Hospital</li><li class="flotrig bglight">	<?php echo $fetch['HOSPITAL'];?></li>	
+		<li class="flotlefty bgsuccess">Elect. Sub-center</li><li class="flotrig bgsuccess">	<?php echo $fetch['BLOCK'];?></li>	
+		<li class="flotlefty bglight">Elect. Complaint-center</li><li class="flotrig bglight">	<?php echo $fetch['BLOCK'];?></li>	
+		<li class="flotlefty bgsuccess">Elect. Sub-Division</li><li class="flotrig bgsuccess">	<?php echo $fetch['BLOCK'];?></li>	
+		<li class="flotlefty bglight">Elect. SDO</li><li class="flotrig bglight">	<?php echo $fetch['BLOCK'];?></li>	
+	
+	
+		
+		
+		
+		</ul>
+
+			</div>  
+		
+			
+			</div>
+			
+			
+			</div>
+                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+           
+	
+		
+<div class="clearfix">
+ 
+  <div class="column menu">
+  <div class="row">
+		<div class="col-md-12">	
+    <ul class="newclstb">
+		<li class="flotlefty bglight"><span class="bold">Total Area</span> <br>
+					Acre Kanal Marle<br> (Hectare)</li>
+		<li class="flotrig bglight"><span class=" "><?php echo $fetch['TotalArea']?></span> <br><br>	<br></li>
+		<li class="flotlefty bgsuccess"><span class="bold">Cultivable</span> <br>
+					Acre Kanal Marle<br> (Hectare)</li>
+		<li class="flotrig bgsuccess"><span class=" "><?php echo $fetch['CULTIVATIVEAREA']?></span> <br><br>	<br></li>
+		
+		<li class="flotlefty bglight"><span class="bold">Non-Cultivable</span> <br>
+					Acre Kanal Marle<br> (Hectare)</li>
+		<li class="flotrig bglight"><span class=" "><?php echo $fetch['NONCULTIVATIVEAREA']?></span> <br><br>	<br></li>
+		<li class="flotlefty bgsuccess">Population</li><li class="flotrig bgsuccess">	<?php echo $fetch['TOTAL'];?>	</li>
+		<li class="flotlefty bglight">Male</li><li class="flotrig bglight">	<?php echo $fetch['MALE'];?></li>	
+			<li class="flotlefty bgsuccess">Female</li><li class="flotrig bgsuccess">	<?php echo $fetch['FEMALE'];?>	</li>
+		<li class="flotlefty bglight"><br></li><li class="flotrig bglight"><br></li>	
+	
+	<li class="flotlefty bgsuccess">Voters:</li><li class="flotrig bgsuccess">	<?php echo $fetch['VOTERS'];?>	</li>
+		<li class="flotlefty bglight">Panchayatghar</li><li class="flotrig bglight">	<?php echo $fetch['PANCHAYATGHAR'];?></li>	
+			<li class="flotlefty bgsuccess">AWCs</li><li class="flotrig bgsuccess">	3	</li>
+		<li class="flotlefty bglight">Talab</li><li class="flotrig bglight">	<br></li>
+		
+		<li class="flotlefty bgsuccess">Stadium:</li><li class="flotrig bgsuccess">			<br></li>
+		<li class="flotlefty bglight">Chaupals</li><li class="flotrig bglight">	<br></li>	
+			<li class="flotlefty bgsuccess">Primary School</li><li class="flotrig bgsuccess">	<br>	</li>
+		<li class="flotlefty bglight">Middle School</li><li class="flotrig bglight">	<br></li>
+		<li class="flotlefty bgsuccess">Secondary School</li><li class="flotrig bgsuccess">	<br>	</li>
+		<li class="flotlefty bglight">Sr. Sec. School</li><li class="flotrig bglight">	<br></li>
+		
+		
+		
+		</ul>
+		</div>  
+		
+			
+			</div>
+</div>
+ 
+</div>
+			
+			
+		
+					</div>
+                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+	
+		
+<div class="newclearfix">
+ 
+  <div class="newcolumn newmenu">
+  <div class="row">
+		<div class="col-md-12">	
+    <ul class="newclstb">
+			
+		<li class="flotlefty bglight">Railway Station :</li><li class="flotrig bglight"><?php echo $fetch['RAILWAYSTATION']?>	</li>
+		<li class="flotlefty bgsuccess">Bus Stand :</li><li class="flotrig bgsuccess">	<?php echo $fetch['BUSSTAND']?>	</li>
+		<li class="flotlefty bglight">Police Station :</li><li class="flotrig bglight">	<?php echo $fetch['POLICESTATION']?>	</li>
+		<li class="flotlefty bgsuccess">Police Post  : </li><li class="flotrig bgsuccess">	<?php echo $fetch['POLICEPOST'];?>	</li>
+		<li class="flotlefty bglight">Post Office :</li><li class="flotrig bglight">	<?php echo $fetch['POSTOFFICE'];?>	</li>
+		<li class="flotlefty bgsuccess">Bank :</li><li class="flotrig bgsuccess">	<?php echo $fetch['BANK'];?>	</li>
+		<li class="flotlefty bglight">ATM :</li><li class="flotrig bglight">	<?php echo $fetch['ATM'];?></li>	
+		<li class="flotlefty bgsuccess">MANDI  :</li><li class="flotrig bgsuccess">	<?php echo $fetch['MANDI'];?></li>	
+		<li class="florange orange"><a href="#" target="_blank" class="underline"><br></a></li>
+		<li class="flogre lightgreecol"><a href="#" target="_blank" class="underline">Public Health</a></li>
+		<li class="flopink pinkcolr "><a href="#" target="_blank" class="underline">Voters List</a></li>
+		<li class="florest restcolr"><a href="#" target="_blank" class="underline">Pensioners List</a></li>
+		<li class="florest darkgr"><a href="#" target="_blank" class="underline">Public Health</a></li>
+		<li class="flotlefty bglight">Sanctioned PMAY(G) Houses</li>
+		<li class="flotrig bglight">	
+		<span class="displinli">
+		  <a href="https://mnregaweb4.nic.in/netnrega/ongo_comp_pds_wrk_rpt_new.aspx?page=D&short_name=&state_name=HARYANA&state_code=12&district_name=KURUKSHETRA&district_code=1203&fin_year=2022-2023&source=national&rbl1=0&rbl2=0&Digest=8VSHPcuQalGbT93oEhIknQ" target="_blank" class="underline pdcls10">2022-23</a> <br> 
+	       <a href="https://mnregaweb4.nic.in/netnrega/ongo_comp_pds_wrk_rpt_new.aspx?page=D&short_name=&state_name=HARYANA&state_code=12&district_name=KURUKSHETRA&district_code=1203&fin_year=2021-2022&source=national&rbl1=0&rbl2=0&Digest=xSxC/T/sUQCCRnlCyTuDCg" target="_blank"class="underline ">  2021-22</a>
+					 </span></li>	
+		
+		
+		<li class="flotlefty bgsuccess">Chief Minister BPL<br> Awaas Yojana</li>
+		<li class="flotrig bgsuccess">	<span class="displinli"><a href="#" target="_blank" class="underline pdcls10">2010-11</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a>
+					 </span></li>	
+		
+		<li class="flotlefty bglight">IAY Incentive-<br>Homestead Scheme</li><li class="flotrig bglight">	<span class="displinli"><a href="#" target="_blank" class="underline pdcls10">2010-11</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a>
+					 </span></li>	
+	
+			<li class="flotlefty bgsuccess">Non-Cultivable</li><li class="flotrig bgsuccess">	<span class="displinli"><a href="#" target="_blank" class="underline pdcls10">2010-11</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a>
+					 </span></li>	
+					 
+		
+		
+		
+		
+		</ul>
+		</div>  
+		
+			
+			</div>
+</div>
+ 
+</div>
+		
+					
+					
+					</div>
+                    <div class="tab-pane fade" id="nav-about" role="tabpanel" aria-labelledby="nav-about-tab">
+                      	<div class="row">
+		<div class="col-md-12">	
+		
+		
+		<ul class="newclstb">
+		<li class="flotlefty bglight">Buffalos</li><li class="flotrig bglight">	<?php echo $fetch['BUFFALOS']?>	</li>
+		<li class="flotlefty bgsuccess">Cow</li><li class="flotrig bgsuccess">	<?php echo $fetch['COWS']?>	</li>
+		<li class="flotlefty bglight"></li><li class="flotrig bglight">	<br></li>
+		<li class="flotlefty bgsuccess">Dog</li><li class="flotrig bgsuccess">	<?php echo $fetch['DOG'];?>	</li>
+		<li class="flotlefty bglight">Pigs:</li><li class="flotrig bglight">	<?php echo $fetch['PIGS'];?>	</li>
+		<li class="flotlefty bgsuccess">Chamels </li><li class="flotrig bgsuccess">	<?php echo $fetch['CAMELS'];?>	</li>
+		<li class="flotlefty bglight">Rabbits:</li><li class="flotrig bglight">	<?php echo $fetch['RABBITS'];?></li>	
+		<li class="flotlefty bgsuccess">Donkeis :</li><li class="flotrig bgsuccess">	<?php echo $fetch['DONKEY'];?></li>	
+		<li class="flotlefty bglight">Mules:</li><li class="flotrig bglight"><?php echo $fetch['MULES']?></li>	
+		<li class="flotlefty bgsuccess">Hores :</li><li class="flotrig bgsuccess">	<?php echo $fetch['HORSES'];?></li>	
+		<li class="flotlefty bglight">Goats :</li><li class="flotrig bglight">	<?php echo $fetch['SHEEP'];?></li>	
+		<li class="flotlefty bgsuccess">Sheepes :</li><li class="flotrig bgsuccess">	<?php echo $fetch['SHEEP'];?></li>	
+		
+	
+	
+		
+		
+		
+		</ul>
+
+			</div>  
+		
+			
+			</div>
+					
+					
+					</div>
+                  </div>
+                
+                </div>
+              </div>
+        </div>
+      </div>
+</div>
+
+
+
+
+
+
+	
+		
+		<?php
+		
+
+		
+		//echo"<tr><th>srno</th> <td>".$fetch['srno']."</td></tr>";
+		//echo"<tr><th>NVCODE</th> <td>".$fetch['NVCODE']."</td></tr>";
+		//echo"<tr><th>PCODE</th> <td>".$fetch['PCODE']."</td></tr>";
+		//echo"<tr><th>VILLAGENAME</th> <td>".$fetch['VILLAGENAME']."</td></tr>";
+		//echo"<tr><th>GRAMPANCHAYAT</th> <td>".$fetch['GRAMPANCHAYAT']."</td></tr>";
+				 
+		//echo"<tr><th>GMAP</th> <td>".$fetch['GMAP']."</td></tr>";
+		//echo"<tr><th>GMAP</th> <td>".'<a href="'. $fetch['GMAP'] .'" class="mr-3" title="View Record" data-toggle="tooltip" target="_blank"> <span class="">'. $fetch['GMAP'] .'</span></a>'."</td></tr>";
+				//echo"<tr><th>LOCATION</th> <td>".$fetch['LOCATION']."</td></tr>";
+
+		
+		
+			//echo"<tr>
+			//<td>".$fetch['SRNO']."</td>
+			//<td>".$fetch['NVCODE']."</td>
+			//<td>".$fetch['PCODE']."</td>
+			//<td>".$fetch['VILLAGENAME']."</td>
+			//<td>".$fetch['GRAMPANCHAYAT']."</td>
+			//<td>".$fetch['GMAP']."</td>
+			
+		  // <td>".'<a href="getEmployee.php?id='. $fetch['LOCATION'] .'" class="mr-3" title="View Record" data-toggle="tooltip"> <span class="">'. $fetch['NVCODE'] .'</span></a>'."</td>
+			
+			//</tr>";
+			
+			
+		//	ALTER TABLE village_master  ADD OX varchar(50) NULL    AFTER BUFFALOS,  ADD COWS varchar(50) NULL    AFTER OX;
+			
+			
+			}}
+			
+			
+		}
+		
+		
+		
+		
+		
+		
+		?>
+				</tbody>
+				</table>
+				
+			
+
+				
+
+
+	<!-- <footer>
+	https://www.codexworld.com/dynamic-dependent-select-box-using-jquery-ajax-php/comment-page-1/
+	
+	
+	https://www.positronx.io/how-to-get-selected-values-from-select-option-in-php/
+	
+	https://stackoverflow.com/questions/24257490/how-to-display-selected-item-at-drop-down-list
+	imp
+	https://www.youtube.com/watch?v=umb3XZpVMiU
+	<a href="#"><p>Submit</p></a></footer> -->
+	
+
+	
+	
+
+</div>
+</div>
+
+
+
+
+
+</body>
+</html>
+
+
+       

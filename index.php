@@ -288,7 +288,7 @@ td.bg-dark-success.center {
 	$query = $db->query("SELECT * FROM countries WHERE status = 1 ORDER BY country_name ASC");
 	$rowCount = $query->num_rows;
 	?>
-	<form action="view.php" method="post" enctype="multipart/form-data" id="myForm">
+	<form action="view1.php" method="post" enctype="multipart/form-data" id="myForm">
 	<ul>
 	
 	<li> 

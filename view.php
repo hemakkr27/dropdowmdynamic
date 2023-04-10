@@ -284,6 +284,21 @@ td.bg-dark-success.center {
 .redcls {
     color: red;
 }
+
+ul.myhow {
+    font-weight: bold;
+}
+ul.subtehvil h3 {
+    margin: 0px;
+    display: block;
+}
+h1.myvillcenter {
+    margin: 0px;
+    display: block;
+}
+ul.myhow {
+    padding: 0px;
+}
   </style>
   
   
@@ -360,9 +375,9 @@ td.bg-dark-success.center {
 		<div class="row">
 		<div class="col-md-12">
 		<ul class="subtehvil">
-	<li><h3 class="redcls">SUBDIVISION : </h3><h3><?php echo $fetch['SUBDIVISION']?></h3>	</li>
-	<li><h3 class="redcls"> TEHSIL : </h3><h3><?php echo $fetch['TEHSIL']?></h3>	</li>
-<li><h3 class="redcls"> VILLAGENAME : </h3><h3><?php echo $fetch['VILLAGENAME']?></h3></li>
+	<li><h3 class="redcls">Sub Division : </h3><h3><?php echo $fetch['SUBDIVISION']?></h3>	</li>
+	<li><h3 class="redcls"> Tehsil : </h3><h3><?php echo $fetch['TEHSIL']?></h3>	</li>
+<li><h3 class="redcls"> Village Name : </h3><h3><?php echo $fetch['VILLAGENAME']?></h3></li>
 		</ul>
 		</div>
 		</div>
@@ -418,7 +433,7 @@ td.bg-dark-success.center {
   
   
   <div class="col-md-2 panel" id="myboxid"> 
-    <label class="center">HOW TO REACHForm H.Q.<?php echo $fetch['PCODE'];?></label>
+    <label class="center">HOW TO REACH Form H.Q.<?php echo $fetch['PCODE'];?></label>
 	
 	
 	 <ul class="myhow">

@@ -32,7 +32,7 @@ $(document).ready(function(){
                 success:function(html){
 				
                     $('#tehsil').html(html);
-                    $('#village').html('<option value="">Select Your Subdivision First</option>'); 
+                    $('#village').html('<option value="">Select Your tehsil First</option>'); 
 					 $('#villagedetail').html('<option value="">Select Your village First</option>'); 
 					 	console.log(data);	
                 }
