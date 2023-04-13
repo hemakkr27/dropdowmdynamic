@@ -133,7 +133,9 @@ $( document ).ready(function() {
 ul.subtehvil h3 {
     font-size: 19px;
 }
-
+ul.myboxborder {
+    padding: 7px;
+}
 
 #myboxid {
     border-right: 0px transparent !important;
@@ -185,8 +187,14 @@ ul.subtehvil h3 {
 h3.logcls {
     font-size: 20px;
 }
-ul.subtehvil {
-    display: inline-block;
+<!--  ul.subtehvil {display: inline-block;} -->
+
+
+
+div#myboxid ul {
+    margin-top: 20px;
+    width: 100%;
+    margin-left: 0px;
 }
 .panel {
     height: auto !important;
@@ -203,6 +211,15 @@ ul.subtehvil h3 {
     margin: 0px;
     font-size: 28px;
     
+}
+
+
+.floatright {
+    float: none;
+}
+
+.displinli {
+    display: block;
 }
 
   }
@@ -240,7 +257,7 @@ ul{	list-style: none;}
 
 .my_select-boxes {
     width: 100%;
-    display: inline-block;
+    <!-- display: inline-block; -->
 }
 
 
@@ -277,16 +294,8 @@ label.mymapspac p
     width:100%;
     display:block;
 }
-div#myboxid ul {
-    margin: 0 auto;
-   
-    margin: 20px;
-}
-.myboxborder {
-    margin: 0 auto;
-    border: 1px solid;
-    margin: 20px;
-}
+
+.myboxborder {  border: 1px solid;  margin-top: 20px;}
 .w_200{width: 200px;}
 .float_left.w_200 {
     float: left;
@@ -512,6 +521,11 @@ ul.myboxborder span {
     font-weight: normal;
 }
 
+ul.subtehvil {
+    padding: 10px;
+    width: 100%;
+}
+
   </style>
   
   
@@ -588,9 +602,9 @@ ul.myboxborder span {
 		<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 		<ul class="subtehvil">
-	<li><h3 class="redcls">Sub Division : </h3><h3><?php echo $fetch['SUBDIVISION']?></h3>	</li>
-	<li><h3 class="redcls"> Tehsil : </h3><h3><?php echo $fetch['TEHSIL']?></h3>	</li>
-<li><h3 class="redcls"> Village Name : </h3><h3><?php echo $fetch['VILLAGENAME']?></h3></li>
+	<li><h3 class="redcls">Sub-Division : </h3><h3><?php echo $fetch['SUBDIVISION']?></h3>	</li>
+	<li><h3 class="redcls">Tehsil : </h3><h3><?php echo $fetch['TEHSIL']?></h3>	</li>
+<li><h3 class="redcls">Village Name : </h3><h3><?php echo $fetch['VILLAGENAME']?></h3></li>
 		</ul>
 		</div>
 		</div>
@@ -616,13 +630,13 @@ ul.myboxborder span {
 		  <div class="row boxclsnew">
 		  <div class="col-md-10 col-sm-12 col-xs-12 width100">
 		 <ul class="myboxborder">
-		<li> <p><a href="#" target="_blank" class="">SARPANCH</a><span class="displinli floatright padright_10"><?php echo $fetch['SARPANCH'];?> </span></p></li>
+		<li> <p>SARPANCH<span class="displinli floatright padright_10"><?php echo $fetch['SARPANCH'];?> </span></p></li>
 		<li> <p>GRAM SACHIV<span class=" displinli floatright padright_10"><?php echo $fetch['GRAMSACHIV'];?> </span></p></li>
-		 <li><p>J.E.<span class=" displinli floatright padright_10"><?php echo $fetch['JE'];?> </span></p></li>
-		  <li><p class="float_left ">PATWARI<span class=" displinli floatright padright_10"><?php echo $fetch['PATWARI'];?> </span></p>
+		 <li><p>J.E. (Development)<span class=" displinli floatright padright_10"><?php echo $fetch['JE'];?> </span></p></li>
+		  <li><p class="float_left ">PATWARI<span class=" displinli floatright padright_10"><?php echo $fetch['PATWARI'];?>  <?php echo $fetch['PMOBILE'];?> <br></span></p>
 		  </li>
-		  <li><p>PATWARI M.<span class=" displinli floatright padright_10"><?php echo $fetch['PMOBILE'];?> </span></p></li>
-		
+		 
+		 <li><br></li>
 		  
 		 </ul>
 		 </div>
@@ -667,14 +681,14 @@ ul.myboxborder span {
             <div class="row">
                 
 				  <div class="col-md-8 col-xs-12 panel col-sm-6" id="myboxid"> 
-    <label class="center">HOW TO REACH Form H.Q.<?php echo $fetch['PCODE'];?></label>
+    <label class="center">How To Reach From H.Q. <?php echo $fetch['PCODE'];?></label>
 	
 	
 	 <ul class="myhow">
 	
 		<li> <p>District<span class="displinli floatright padright_10"> <a href="<?php echo $fetch['HRDISTRICT']?>" target="_blank" class="">Kurukshetra</a></span></p></li>
-		<li> <p>SUBDIVISION<span class="displinli floatright padright_10"> <a href="<?php echo $fetch['HRSUBDIVISION']?>" target="_blank" class=""><?php echo $fetch['SUBDIVISION']?></a></span></p></li>
-		<li> <p>TEHSIL<span class="displinli floatright padright_10"> <a href="<?php echo $fetch['HRTEHSIL']?>" target="_blank" class=""><?php echo $fetch['TEHSIL']?></a></span></p></li>
+		<li> <p>Sub-Division<span class="displinli floatright padright_10"> <a href="<?php echo $fetch['HRSUBDIVISION']?>" target="_blank" class=""><?php echo $fetch['SUBDIVISION']?></a></span></p></li>
+		<li> <p>Tehsil<span class="displinli floatright padright_10"> <a href="<?php echo $fetch['HRTEHSIL']?>" target="_blank" class=""><?php echo $fetch['TEHSIL']?></a></span></p></li>
 		
 		  
 		
@@ -745,6 +759,8 @@ ul.myboxborder span {
                     <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
                       <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Village information</a>
                       <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Statistical Information</a>
+					     <a class="nav-item nav-link" id="nav-popu-tab" data-toggle="tab" href="#nav-popu" role="tab" aria-controls="nav-popu" aria-selected="false">Voters</a>
+						   <a class="nav-item nav-link" id="nav-Voter-tab" data-toggle="tab" href="#nav-Voter" role="tab" aria-controls="nav-Voter" aria-selected="false">Population</a>
                       <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Accessibilities</a>
                       <a class="nav-item nav-link" id="nav-about-tab" data-toggle="tab" href="#nav-about" role="tab" aria-controls="nav-about" aria-selected="false">Cattles</a>
                     </div>
@@ -756,23 +772,23 @@ ul.myboxborder span {
 		
 		
 		<ul class="newclstb">
-		<li class="flotlefty bglight">DISTRICT</li><li class="flotrig bglight">	kurukshetra	</li>
-		<li class="flotlefty bgsuccess">SUBDIVISION</li><li class="flotrig bgsuccess">	<?php echo $fetch['SUBDIVISION']?>	</li>
-		<li class="flotlefty bglight">TEHSIL</li><li class="flotrig bglight">	<?php echo $fetch['TEHSIL']?>	</li>
+		<li class="flotlefty bglight">District</li><li class="flotrig bglight">	Kurukshetra	</li>
+		<li class="flotlefty bgsuccess">Sub-Division</li><li class="flotrig bgsuccess">	<?php echo $fetch['SUBDIVISION']?>	</li>
+		<li class="flotlefty bglight">Tehsil</li><li class="flotrig bglight">	<?php echo $fetch['TEHSIL']?>	</li>
 		<li class="flotlefty bgsuccess">Sub Tehsil</li><li class="flotrig bgsuccess">	<?php echo $fetch['TEHSIL'];?>	</li>
-		<li class="flotlefty bglight">kanungo Circle</li><li class="flotrig bglight">	<?php echo $fetch['TEHSIL'];?>	</li>
+		<li class="flotlefty bglight">Kanungo Circle</li><li class="flotrig bglight">	<?php echo $fetch['TEHSIL'];?>	</li>
 		<li class="flotlefty bgsuccess">Patwar Circle</li><li class="flotrig bgsuccess">	Pipli	</li>
 		<li class="flotlefty bglight">Block</li><li class="flotrig bglight">	<?php echo $fetch['BLOCK'];?></li>	
 		<li class="flotlefty bgsuccess">Gram Panchayat</li><li class="flotrig bgsuccess">	<?php echo $fetch['GRAMPANCHAYAT'];?></li>	
-		<li class="flotlefty bglight">Parliament Consitituency</li><li class="flotrig bglight">Kurukshetra</li>	
-		<li class="flotlefty bgsuccess">Assembly Consitituency</li><li class="flotrig bgsuccess">	<?php echo $fetch['ASSEMBLYCONST'];?></li>	
-		<li class="flotlefty bglight">Vaterinary Hospital</li><li class="flotrig bglight">	<?php echo $fetch['VATHOSPITAL'];?></li>	
-		<li class="flotlefty bgsuccess">Health Sub-center</li><li class="flotrig bgsuccess">	<?php echo $fetch['BLOCK'];?></li>	
-		<li class="flotlefty bglight">PHC :</li><li class="flotrig bglight">	<?php echo $fetch['PHC'];?></li>	
-		<li class="flotlefty bgsuccess">CHC :</li><li class="flotrig bgsuccess">	<?php echo $fetch['CHC'];?></li>	
+		<li class="flotlefty bglight">Parliament Constituency</li><li class="flotrig bglight">Kurukshetra</li>	
+		<li class="flotlefty bgsuccess">Assembly Constituency</li><li class="flotrig bgsuccess">	<?php echo $fetch['ASSEMBLYCONST'];?></li>	
+		<li class="flotlefty bglight">Veterinary Hospital</li><li class="flotrig bglight">	<?php echo $fetch['VATHOSPITAL'];?></li>	
+		<li class="flotlefty bgsuccess">Health Sub-Center</li><li class="flotrig bgsuccess">	<?php echo $fetch['BLOCK'];?></li>	
+		<li class="flotlefty bglight">PHC  </li><li class="flotrig bglight">	<?php echo $fetch['PHC'];?></li>	
+		<li class="flotlefty bgsuccess">CHC  </li><li class="flotrig bgsuccess">	<?php echo $fetch['CHC'];?></li>	
 		<li class="flotlefty bglight">Hospital</li><li class="flotrig bglight">	<?php echo $fetch['HOSPITAL'];?></li>	
-		<li class="flotlefty bgsuccess">Elect. Sub-center</li><li class="flotrig bgsuccess">	<?php echo $fetch['BLOCK'];?></li>	
-		<li class="flotlefty bglight">Elect. Complaint-center</li><li class="flotrig bglight">	<?php echo $fetch['BLOCK'];?></li>	
+		<li class="flotlefty bgsuccess">Elect. Sub-Center</li><li class="flotrig bgsuccess">	<?php echo $fetch['BLOCK'];?></li>	
+		<li class="flotlefty bglight">Elect. Complaint-Center</li><li class="flotrig bglight">	<?php echo $fetch['BLOCK'];?></li>	
 		<li class="flotlefty bgsuccess">Elect. Sub-Division</li><li class="flotrig bgsuccess">	<?php echo $fetch['BLOCK'];?></li>	
 		<li class="flotlefty bglight">Elect. SDO</li><li class="flotrig bglight">	<?php echo $fetch['BLOCK'];?></li>	
 	
@@ -799,27 +815,23 @@ ul.myboxborder span {
   <div class="row">
 		<div class="col-md-12">	
     <ul class="newclstb">
-		<li class="flotlefty bglight"><span class="bold">Total Area</span> <br>
-					Acre Kanal Marle<br> (Hectare)</li>
-		<li class="flotrig bglight"><span class=" "><?php echo $fetch['TotalArea']?></span> <br><br>	<br></li>
-		<li class="flotlefty bgsuccess"><span class="bold">Cultivable</span> <br>
-					Acre Kanal Marle<br> (Hectare)</li>
-		<li class="flotrig bgsuccess"><span class=" "><?php echo $fetch['CULTIVATIVEAREA']?></span> <br><br>	<br></li>
+		<li class="flotlefty bglight"><span class="">Total Area</span> <br>
+					</li>
+		<li class="flotrig bglight">Acre Kanal Marle (Hectare)<br><span class=" "> <?php echo $fetch['TotalArea']?></span> <br></li>
+		<li class="flotlefty bgsuccess"><span class="">Cultivable</span> <br>
+					</li>
+		<li class="flotrig bgsuccess">Acre Kanal Marle (Hectare)<br><span class=" "><?php echo $fetch['CULTIVATIVEAREA']?></span> <br></li>
 		
-		<li class="flotlefty bglight"><span class="bold">Non-Cultivable</span> <br>
-					Acre Kanal Marle<br> (Hectare)</li>
-		<li class="flotrig bglight"><span class=" "><?php echo $fetch['NONCULTIVATIVEAREA']?></span> <br><br>	<br></li>
-		<li class="flotlefty bgsuccess">Population</li><li class="flotrig bgsuccess">	<?php echo $fetch['TOTAL'];?>	</li>
-		<li class="flotlefty bglight">Male</li><li class="flotrig bglight">	<?php echo $fetch['MALE'];?></li>	
-			<li class="flotlefty bgsuccess">Female</li><li class="flotrig bgsuccess">	<?php echo $fetch['FEMALE'];?>	</li>
-		<li class="flotlefty bglight"><br></li><li class="flotrig bglight"><br></li>	
+		<li class="flotlefty bglight"><span class="">Non-Cultivable</span> <br>
+					</li>
+		<li class="flotrig bglight">Acre Kanal Marle (Hectare)<br><span class=" "><?php echo $fetch['NONCULTIVATIVEAREA']?></span><br></li>
 	
-	<li class="flotlefty bgsuccess">Voters:</li><li class="flotrig bgsuccess">	<?php echo $fetch['VOTERS'];?>	</li>
-		<li class="flotlefty bglight">Panchayatghar</li><li class="flotrig bglight">	<?php echo $fetch['PANCHAYATGHAR'];?></li>	
-			<li class="flotlefty bgsuccess">AWCs</li><li class="flotrig bgsuccess">	3	</li>
+		
+	
+
 		<li class="flotlefty bglight">Talab</li><li class="flotrig bglight">	<br></li>
 		
-		<li class="flotlefty bgsuccess">Stadium:</li><li class="flotrig bgsuccess">			<br></li>
+		<li class="flotlefty bgsuccess">Stadium </li><li class="flotrig bgsuccess">			<br></li>
 		<li class="flotlefty bglight">Chaupals</li><li class="flotrig bglight">	<br></li>	
 			<li class="flotlefty bgsuccess">Primary School</li><li class="flotrig bgsuccess">	<br>	</li>
 		<li class="flotlefty bglight">Middle School</li><li class="flotrig bglight">	<br></li>
@@ -840,6 +852,74 @@ ul.myboxborder span {
 			
 		
 					</div>
+					
+					
+					
+					<div class="tab-pane fade" id="nav-popu" role="tabpanel" aria-labelledby="nav-popu-tab">
+           
+	
+		
+<div class="clearfix">
+ 
+  <div class="column menu">
+  <div class="row">
+		<div class="col-md-12">	
+    <ul class="newclstb">
+		
+			<li class="flotlefty bgsuccess">Voters </li><li class="flotrig bgsuccess">	<?php echo $fetch['VOTERS'];?>	</li>
+		<li class="flotlefty bglight">Panchayatghar</li><li class="flotrig bglight">	<?php echo $fetch['PANCHAYATGHAR'];?></li>	
+			<li class="flotlefty bgsuccess">AWCs</li><li class="flotrig bgsuccess">	3	</li>
+	
+		
+		
+		
+		</ul>
+		</div>  
+		
+			
+			</div>
+</div>
+ 
+</div>
+			
+			
+		
+					</div>
+					
+						<div class="tab-pane fade" id="nav-Voter" role="tabpanel" aria-labelledby="nav-Voter-tab">
+           
+	
+		
+<div class="clearfix">
+ 
+  <div class="column menu">
+  <div class="row">
+		<div class="col-md-12">	
+    <ul class="newclstb">
+		
+		<li class="flotlefty bgsuccess"><span class="">Total Population</span></li><li class="flotrig bgsuccess">	<?php echo $fetch['TOTAL'];?>	</li>
+		<li class="flotlefty bglight"><span class="">Male</span></li><li class="flotrig bglight">	<?php echo $fetch['MALE'];?></li>	
+			<li class="flotlefty bgsuccess"><span class="">Female</span></li><li class="flotrig bgsuccess">	<?php echo $fetch['FEMALE'];?>	</li>
+		<li class="flotlefty bglight"><br></li><li class="flotrig bglight"><br></li>	
+	
+	
+		
+		
+		
+		</ul>
+		</div>  
+		
+			
+			</div>
+</div>
+ 
+</div>
+			
+			
+		
+					</div>
+					
+					
                     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
 	
 		
@@ -850,14 +930,14 @@ ul.myboxborder span {
 		<div class="col-md-12">	
     <ul class="newclstb">
 			
-		<li class="flotlefty bglight">Railway Station :</li><li class="flotrig bglight"><?php echo $fetch['RAILWAYSTATION']?>	</li>
-		<li class="flotlefty bgsuccess">Bus Stand :</li><li class="flotrig bgsuccess">	<?php echo $fetch['BUSSTAND']?>	</li>
-		<li class="flotlefty bglight">Police Station :</li><li class="flotrig bglight">	<?php echo $fetch['POLICESTATION']?>	</li>
-		<li class="flotlefty bgsuccess">Police Post  : </li><li class="flotrig bgsuccess">	<?php echo $fetch['POLICEPOST'];?>	</li>
-		<li class="flotlefty bglight">Post Office :</li><li class="flotrig bglight">	<?php echo $fetch['POSTOFFICE'];?>	</li>
-		<li class="flotlefty bgsuccess">Bank :</li><li class="flotrig bgsuccess">	<?php echo $fetch['BANK'];?>	</li>
-		<li class="flotlefty bglight">ATM :</li><li class="flotrig bglight">	<?php echo $fetch['ATM'];?></li>	
-		<li class="flotlefty bgsuccess">MANDI  :</li><li class="flotrig bgsuccess">	<?php echo $fetch['MANDI'];?></li>	
+		<li class="flotlefty bglight">Railway Station  </li><li class="flotrig bglight"><?php echo $fetch['RAILWAYSTATION']?>	</li>
+		<li class="flotlefty bgsuccess">Bus Stand  </li><li class="flotrig bgsuccess">	<?php echo $fetch['BUSSTAND']?>	</li>
+		<li class="flotlefty bglight">Police Station  </li><li class="flotrig bglight">	<?php echo $fetch['POLICESTATION']?>	</li>
+		<li class="flotlefty bgsuccess">Police Post    </li><li class="flotrig bgsuccess">	<?php echo $fetch['POLICEPOST'];?>	</li>
+		<li class="flotlefty bglight">Post Office  </li><li class="flotrig bglight">	<?php echo $fetch['POSTOFFICE'];?>	</li>
+		<li class="flotlefty bgsuccess">Bank  </li><li class="flotrig bgsuccess">	<?php echo $fetch['BANK'];?>	</li>
+		<li class="flotlefty bglight">ATM  </li><li class="flotrig bglight">	<?php echo $fetch['ATM'];?></li>	
+		<li class="flotlefty bgsuccess">Mandi   </li><li class="flotrig bgsuccess">	<?php echo $fetch['MANDI'];?></li>	
 		<li class="florange orange"><a href="#" target="_blank" class="underline"><br></a></li>
 		<li class="flogre lightgreecol"><a href="#" target="_blank" class="underline">Public Health</a></li>
 		<li class="flopink pinkcolr "><a href="#" target="_blank" class="underline">Voters List</a></li>
@@ -877,18 +957,36 @@ ul.myboxborder span {
 					 <a href="#" target="_blank"class="underline ">  2011-12</a>
 					 </span></li>	
 		
-		<li class="flotlefty bglight">IAY Incentive-<br>Homestead Scheme</li><li class="flotrig bglight">	<span class="displinli"><a href="#" target="_blank" class="underline pdcls10">2010-11</a> <br> 
+		<li class="flotlefty bglight">Category Wise -<br>HouseHold/Workers</li><li class="flotrig bglight">	<span class="displinli"><a href="https://mnregaweb4.nic.in/netnrega/app_issue.aspx?page=d&lflag=&state_name=HARYANA&state_code=12&district_name=KURUKSHETRA&district_code=1203&fin_year=2022-2023&source=national&Digest=CdDeUwbu9g/fv3ZpNOb83w" target="_blank" class="underline pdcls10">2010-11</a> <br> 
 					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
 					 <a href="#" target="_blank"class="underline ">  2011-12</a>
 					 </span></li>	
 	
-			<li class="flotlefty bgsuccess">Non-Cultivable</li><li class="flotrig bgsuccess">	<span class="displinli"><a href="#" target="_blank" class="underline pdcls10">2010-11</a> <br> 
-					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
+			<li class="flotlefty bgsuccess">PM KISAN SAMMAN NIDHI</li><li class="flotrig bgsuccess">	<span class="displinli"><a href="#" target="_blank" class="underline pdcls10">2010-11</a> <br> 
+					 <a href="https://grammanchitra.gov.in/" target="_blank"class="underline ">  2011-12</a> <br> 
 					 <a href="#" target="_blank"class="underline ">  2011-12</a>
 					 </span></li>	
 					 
 		
-		
+		<li class="flotlefty bglight">PR Center wise-<br>Ration Cards</li><li class="flotrig bglight">	<span class="displinli">
+		<a href="http://epos.haryanafood.gov.in/AbstractTransReport.jsp" target="_blank" class="underline pdcls10">2010-11</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a>
+					 </span></li>	
+					 
+					 
+			<li class="flotlefty bgsuccess">Village Information</li><li class="flotrig bgsuccess">	<span class="displinli">
+					 <a href="https://grammanchitra.gov.in/" target="_blank"class="underline "> Village info</a> <br> 
+					
+					 </span></li>	
+					 
+					 	<li class="flotlefty bglight">IAY Incentive-<br>Homestead Scheme</li><li class="flotrig bglight">	<span class="displinli"><a href="#" target="_blank" class="underline pdcls10">2010-11</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
+					 <a href="#" target="_blank"class="underline ">  2011-12</a>
+					 </span></li>
+					 
+				
+					 
 		
 		
 		</ul>
@@ -913,14 +1011,14 @@ ul.myboxborder span {
 		<li class="flotlefty bgsuccess">Cow</li><li class="flotrig bgsuccess">	<?php echo $fetch['COWS']?>	</li>
 		<li class="flotlefty bglight"></li><li class="flotrig bglight">	<br></li>
 		<li class="flotlefty bgsuccess">Dog</li><li class="flotrig bgsuccess">	<?php echo $fetch['DOG'];?>	</li>
-		<li class="flotlefty bglight">Pigs:</li><li class="flotrig bglight">	<?php echo $fetch['PIGS'];?>	</li>
+		<li class="flotlefty bglight">Pigs </li><li class="flotrig bglight">	<?php echo $fetch['PIGS'];?>	</li>
 		<li class="flotlefty bgsuccess">Chamels </li><li class="flotrig bgsuccess">	<?php echo $fetch['CAMELS'];?>	</li>
-		<li class="flotlefty bglight">Rabbits:</li><li class="flotrig bglight">	<?php echo $fetch['RABBITS'];?></li>	
-		<li class="flotlefty bgsuccess">Donkeis :</li><li class="flotrig bgsuccess">	<?php echo $fetch['DONKEY'];?></li>	
-		<li class="flotlefty bglight">Mules:</li><li class="flotrig bglight"><?php echo $fetch['MULES']?></li>	
-		<li class="flotlefty bgsuccess">Hores :</li><li class="flotrig bgsuccess">	<?php echo $fetch['HORSES'];?></li>	
-		<li class="flotlefty bglight">Goats :</li><li class="flotrig bglight">	<?php echo $fetch['SHEEP'];?></li>	
-		<li class="flotlefty bgsuccess">Sheepes :</li><li class="flotrig bgsuccess">	<?php echo $fetch['SHEEP'];?></li>	
+		<li class="flotlefty bglight">Rabbits </li><li class="flotrig bglight">	<?php echo $fetch['RABBITS'];?></li>	
+		<li class="flotlefty bgsuccess">Donkeis  </li><li class="flotrig bgsuccess">	<?php echo $fetch['DONKEY'];?></li>	
+		<li class="flotlefty bglight">Mules </li><li class="flotrig bglight"><?php echo $fetch['MULES']?></li>	
+		<li class="flotlefty bgsuccess">Hores  </li><li class="flotrig bgsuccess">	<?php echo $fetch['HORSES'];?></li>	
+		<li class="flotlefty bglight">Goats  </li><li class="flotrig bglight">	<?php echo $fetch['SHEEP'];?></li>	
+		<li class="flotlefty bgsuccess">Sheepes  </li><li class="flotrig bgsuccess">	<?php echo $fetch['SHEEP'];?></li>	
 		
 	
 	

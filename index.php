@@ -32,15 +32,15 @@ $(document).ready(function(){
                 success:function(html){
 				
                     $('#tehsil').html(html);
-                    $('#village').html('<option value="">Select Your tehsil First</option>'); 
-					 $('#villagedetail').html('<option value="">Select Your village First</option>'); 
+                    $('#village').html('<option value="">Select Village </option>'); 
+					 $('#villagedetail').html('<option value="">Select Village </option>'); 
 					 	console.log(data);	
                 }
             }); 
         }else{
-            $('#tehsil').html('<option value="">Select Your Country First</option>');
-            $('#village').html('<option value="">Select Your State First</option>'); 
-			 $('#villagedetail').html('<option value="">Select Your village First</option>'); 
+            $('#tehsil').html('<option value="">Select Country </option>');
+            $('#village').html('<option value="">Select State </option>'); 
+			 $('#villagedetail').html('<option value="">Select Village </option>'); 
         }
     });
     $('#tehsil').on('change',function(){
@@ -52,13 +52,13 @@ $(document).ready(function(){
                 data:'state_id='+stateID,
                 success:function(html){
                     $('#village').html(html);
-					 $('#villagedetail').html('<option value="">Select Your village First</option>');
+					 $('#villagedetail').html('<option value="">Select Village </option>');
 					 	console.log(data);	
                 }
             }); 
         }else{
-            $('#village').html('<option value="">Select Your village First</option>'); 
-						 $('#villagedetail').html('<option value="">Select Your villagedetail First</option>'); 
+            $('#village').html('<option value="">Select Village</option>'); 
+						 $('#villagedetail').html('<option value="">Select Villagedetail </option>'); 
         }
     });
 	
@@ -75,7 +75,7 @@ $(document).ready(function(){
                 }
             }); 
         }else{
-            $('#villagedetail').html('<option value="">Select Your State First</option>'); 
+            $('#villagedetail').html('<option value="">Select State </option>'); 
         }
     });
 	
@@ -95,7 +95,7 @@ $(document).ready(function(){
                 }
             }); 
         }else{
-            $('#villagedetail').html('<option value="">Select Your State First</option>'); 
+            $('#villagedetail').html('<option value="">Select State </option>'); 
         }
     });
 	
@@ -125,6 +125,42 @@ $( document ).ready(function() {
 <body>
 
   <style>
+  
+    @media (max-width: 768px) {
+  .my_select-boxes li {
+    float: none !important;
+   
+}
+.mysearch {
+    text-align: center;
+    width: auto;
+}
+
+form#myForm ul {
+    display: inline !important;
+}
+
+.mycontainer {
+    margin-top: -15px !important;
+}
+.newrow {
+    margin-left: 15px !important;
+    margin-right: 15px;
+}
+
+.my_select-boxes ul {
+    padding: 10px;
+}
+
+
+
+
+button#filter {
+    margin-top: -30px;
+}
+  }
+  
+  
 h1.alert-info {
     margin-bottom: -10px;
 }
@@ -133,7 +169,8 @@ ul{	list-style: none;}
 .my_select-boxes li {
    float:left;
  
-   padding:11px;
+   padding-left:11px;
+   padding-right:11px;
   
 }
 
@@ -237,7 +274,7 @@ font-weight:bold;}
     margin-left: 0px;
     margin-right: 0px;
 }
-.underline {
+xml_error_string.underline {
     text-decoration: underline;
 }
 #myid {
@@ -276,12 +313,45 @@ td.bg-dark-success.center {
 .hide {
   display: none;
 }
+
+.mycontainer  {
+    margin-top: 25px;
+   margin-bottom: 25px;
+}
+
+
+
+.newrow {
+    margin-left: 0px;
+    margin-right: 15px;
+}
+
+
+form#myForm ul {
+    display: inline-block;
+}
+
+.mysearch {
+    text-align: center;
+    width: 600px;
+}
+
   </style>
 
  <div class="wrapper">
+ 
+ 
+ 
+ 
+ 
+	<h2 align="center" class="">VIS Kurukshetra</h2>
+	<h4 align="center" class="">(Village Information System)</h4>
+	<div align="center" class=""><img class="site_logo" height="100" id="logo" src="https://cdn.s3waas.gov.in/s3248e844336797ec98478f85e7626de4a/uploads/2018/03/2018031581.jpg" alt="Logo"></div>	
 
-<div class="my_container">
-<h1 align="center"></h1><br/>
+<div class="">
+		<div class="col-md-12 col-sm-12 col-xs-12">
+		<div class="my_container" align="center">
+
 	<div class="my_select-boxes">
 	<?php
 	include('dbConfig.php');
@@ -291,14 +361,10 @@ td.bg-dark-success.center {
 	<form action="view1.php" method="post" enctype="multipart/form-data" id="myForm">
 	<ul>
 	
-	<li> 
 	
 	
-	
-	</li>
-	
-		 <li><h3>Select Subdivision  </h3><select name="subdivision" id="country" type="button" class="btn btn-primary btn-lg btn-block" selected="selected">
-			<option value="">Select Your subdivision</option>
+		 <li><h3>Select Sub-Division  </h3><select name="subdivision" id="country" type="button" class="btn btn-primary btn-lg btn-block" selected="selected">
+			<option value="">Select Sub-Division</option>
 			<?php
 			if($rowCount > 0){
 				while($row = $query->fetch_assoc()){ 
@@ -310,17 +376,17 @@ td.bg-dark-success.center {
 			?>
 		</select></li>
 		<li><h3>Select Tehsil  </h3><select name="tehsil" id="tehsil" type="button" class="btn btn-primary btn-lg btn-block">
-			<option value="">Select Your tehsil</option>
+			<option value="">Select Tehsil</option>
 		</select></li>
 		<li><h3>Select Village  </h3><select name="village" id="village" type="button" class="btn btn-primary btn-lg btn-block">
-			<option value="">Select Your village </option>
+			<option value="">Select Village </option>
 		</select></li>
 	<!-- 	<li><select name="filter" id="filter_id" type="button" class="btn btn-primary btn-lg btn-block">
 			<option value="">submit</option>
 		</select></li> -->
 		
 		
-	 <li>	<h3><br></h3><button class="btn btn-primary" value="submit"  type="submit" id="filter" name="filter">Submit</button></li> 
+	 <li>	<h3><br></h3><button class="btn btn-primary mybtncls" value="submit"  type="submit" id="filter" name="filter">Submit</button></li> 
 
 		  
 
@@ -331,8 +397,17 @@ td.bg-dark-success.center {
 		</form>
 		
 	</div>
+		<div class="newrow">
 
 
+
+<div class="mysearch">
+<div class="mycontainer mt-5">
+      
+        <input type="text" class="form-control" name="live_search" id="live_search" autocomplete="off"
+            placeholder="Search ...">
+        <div id="search_result"></div>
+    </div>
 
 
 
@@ -341,6 +416,96 @@ td.bg-dark-success.center {
 
 
 
+</div>
+
+
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+	<script>
+	$(document).ready(function(){
+		load_data();
+		function load_data(query)
+		{
+			$.ajax({
+			url:"searchmy.php",
+			method:"POST",
+			data:{query:query},
+			success:function(data)
+			{
+				$('#result').html(data);
+			}
+			});
+		}
+		$('#search').keyup(function(){
+		var search = $(this).val();
+		if(search != '')
+		{
+		
+			load_data(search);
+		}
+		else
+		{
+		
+			load_data();
+		}
+		});
+	});
+	</script>
+
+<!-- HERE CODE ADD  -->
+
+
+
+
+</div>
+
+		</div>
+		</div>
+
+
+
+
+
+
+
+	
+	<p><tr><div align="center" class=""><img src="https://kurukshetra.gov.in/wp-content/themes/district-theme-11/images/nicLogo.png" alt="National Informatics Centre opens a new window"></div> </tr></p>
+	
+
+
+	
+	</div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#live_search").keyup(function () {
+                var query = $(this).val();
+                if (query != "") {
+                    $.ajax({
+                        url: 'ajax-live-search.php',
+                        method: 'POST',
+                        data: {
+                            query: query
+                        },
+                        success: function (data) {
+                            $('#search_result').html(data);
+                            $('#search_result').css('display', 'block');
+                            $("#live_search").focusout(function () {
+                                $('#search_result').css('display', 'none');
+                            });
+                            $("#live_search").focusin(function () {
+                                $('#search_result').css('display', 'block');
+                            });
+                        }
+                    });
+                } else {
+                    $('#search_result').css('display', 'none');
+                }
+            });
+        });
+    </script>
 
 
 </body>

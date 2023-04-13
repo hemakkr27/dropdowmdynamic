@@ -1,9 +1,20 @@
+
+<?php
+ 
+	
+	$serverName=".";
+	$connectionInfo=array("Database"=>"DRDA","UID"=>"Appkaksha", "PWD"=>"Appkaksha","CharacterSet"=>"UTF-8");
+	$connect=sqlsrv_connect($serverName,$connectionInfo)
+	or die(print_r(sqlsrv_errors(),true));
+?>
+
+
+
 <?php
 $dbhost = 'localhost';
 $dbusername = 'root';
 $dbpassword = '';
 $dbname = 'dynamic';
-$dbcon = new PDO("mysql:host=localhost;dbname=dropDown_test",'root','');
 $db = new mysqli($dbhost, $dbusername, $dbpassword, $dbname);
 if ($db->connect_error) {
     die("Connection Failed, No Data Found: " . $db->connect_error);
