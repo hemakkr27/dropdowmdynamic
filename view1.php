@@ -137,6 +137,8 @@ ul.myboxborder {
     padding: 7px;
 }
 
+
+
 #myboxid {
     border-right: 0px transparent !important;
     margin-bottom: 0px;
@@ -263,7 +265,7 @@ ul{	list-style: none;}
 
 .myvillcenter {
     /* text-align: center; */
-    background-color: #0099cc;
+    background-color: #5e757c;
     padding-left: 48px;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -344,7 +346,8 @@ font-weight:bold;}
 
 }
 .bgyello {
-    background-color: #ffff99;
+	 background-color: #e8fcff;
+<!-- --    background-color: #ffff99; -->
     border: 2px solid #bbb;
  
     margin-left: 0px;
@@ -421,7 +424,7 @@ nav > div a.nav-item.nav-link.active
   border: none;
     padding: 18px 25px;
     color:#fff;
-    background:#272e38;
+    background:#4e5c70;
     border-radius:0;
 }
 
@@ -459,11 +462,11 @@ li.flotlefty {
     width: 50%;
 }
 .bglight {
-    background-color: #ccff99;
+    background-color: #a9d0f1;
 	padding: 10px;
 }
 .bgsuccess {
-    background: #f0ffe1;
+    background: #e8fcff;
 	padding: 10px;
 }
 ul.newclstb {
@@ -524,6 +527,11 @@ ul.myboxborder span {
 ul.subtehvil {
     padding: 10px;
     width: 100%;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #6a678b;
+    border-color: #6a678b;
 }
 
   </style>

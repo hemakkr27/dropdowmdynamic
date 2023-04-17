@@ -127,6 +127,12 @@ $( document ).ready(function() {
   <style>
   
     @media (max-width: 768px) {
+	
+	.mysearch {
+    text-align: center;
+    width: auto !important;
+}
+
   .my_select-boxes li {
     float: none !important;
    
@@ -333,8 +339,21 @@ form#myForm ul {
 
 .mysearch {
     text-align: center;
-    width: 600px;
+	width:600px
+   
 }
+
+.wrapper {
+     background: #e8fcff;
+    padding-bottom: 11px;
+    padding-top: 10px;}
+	
+	
+	.btn-primary {
+    color: #fff;
+    background-color: #6a678b !IMPORTANT;
+	}
+
 
   </style>
 
