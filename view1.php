@@ -392,7 +392,7 @@ td.bg-dark-success.center {
 }
 
 .redcls {
-    color: red;
+    color: #87186a;
 }
 
 ul.myhow {
@@ -435,14 +435,14 @@ nav > div a.nav-item.nav-link.active:after
   bottom: -60px;
   left: -10%;
   border: 15px solid transparent;
-  border-top-color: #e74c3c ;
+  border-top-color: #87186a ;
 }
 .tab-content{
   background: #fdfdfd;
     line-height: 25px;
     border: 1px solid #ddd;
-    border-top:5px solid #e74c3c;
-    border-bottom:5px solid #e74c3c;
+    border-top:5px solid #87186a;
+    border-bottom:5px solid #87186a;
     padding:30px 25px;
 }
 
@@ -450,7 +450,8 @@ nav > div a.nav-item.nav-link:hover,
 nav > div a.nav-item.nav-link:focus
 {
   border: none;
-    background: #e74c3c;
+  /*  background: #e74c3c; */
+    background: #64144f;
     color:#fff;
     border-radius:0;
     transition:background 0.20s linear;
@@ -480,7 +481,7 @@ li.florange.orange {
     padding: 10px;
 }
 .lightgreecol {
-    background: #ccff66;
+    background: #c9d1ba;
 	 width: 100%;
   
     text-align: center;
@@ -488,14 +489,14 @@ li.florange.orange {
 }
 
 .restcolr {
-    background: #ff9933;
+    background: #ffdfbf;
 	 width: 100%;
   
     text-align: center;
     padding: 10px;
 }
 .pinkcolr {
-    background: #ff99ff;
+    background: #c7c5c7;
 	 width: 100%;
   
     text-align: center;
@@ -650,7 +651,7 @@ ul.subtehvil {
 		 </div>
 		 <div class="col-md-2 col-sm-12 col-xs-12 width100">
 		 <div class="myimagcls">
-		 <img src="http://localhost/dynamic/sarpanch/<?php echo $fetch['NVCODE']?>.JPG" width="100px" height="100px"></div>
+		 <img src="http://103.87.24.56/dynamic/sarpanch/<?php echo $fetch['NVCODE']?>.JPG" width="100px" height="100px"></div>
 		 </div>
 		 
 		   </div>
@@ -947,10 +948,10 @@ ul.subtehvil {
 		<li class="flotlefty bglight">ATM  </li><li class="flotrig bglight">	<?php echo $fetch['ATM'];?></li>	
 		<li class="flotlefty bgsuccess">Mandi   </li><li class="flotrig bgsuccess">	<?php echo $fetch['MANDI'];?></li>	
 		<li class="florange orange"><a href="#" target="_blank" class="underline"><br></a></li>
-		<li class="flogre lightgreecol"><a href="#" target="_blank" class="underline">Public Health</a></li>
-		<li class="flopink pinkcolr "><a href="#" target="_blank" class="underline">Voters List</a></li>
-		<li class="florest restcolr"><a href="#" target="_blank" class="underline">Pensioners List</a></li>
-		<li class="florest darkgr"><a href="#" target="_blank" class="underline">Public Health</a></li>
+		<li class="flogre lightgreecol"><a href="https://phedharyana.gov.in/PHED-Dashboard/Index.html" target="_blank" class="underline">Public Health</a></li>
+		<li class="flopink pinkcolr "><a href="https://ceoharyana.gov.in/WebCMS/Start/1519" target="_blank" class="underline">Voters List</a></li>
+		<li class="florest restcolr"><a href="https://pension.socialjusticehry.gov.in/Ben_List" target="_blank" class="underline">Pensioners List</a></li>
+	
 		<li class="flotlefty bglight">Sanctioned PMAY(G) Houses</li>
 		<li class="flotrig bglight">	
 		<span class="displinli">
@@ -965,19 +966,20 @@ ul.subtehvil {
 					 <a href="#" target="_blank"class="underline ">  2011-12</a>
 					 </span></li>	
 		
-		<li class="flotlefty bglight">Category Wise -<br>HouseHold/Workers</li><li class="flotrig bglight">	<span class="displinli"><a href="https://mnregaweb4.nic.in/netnrega/app_issue.aspx?page=d&lflag=&state_name=HARYANA&state_code=12&district_name=KURUKSHETRA&district_code=1203&fin_year=2022-2023&source=national&Digest=CdDeUwbu9g/fv3ZpNOb83w" target="_blank" class="underline pdcls10">2010-11</a> <br> 
-					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
-					 <a href="#" target="_blank"class="underline ">  2011-12</a>
+		<li class="flotlefty bglight">Category Wise -<br>HouseHold/Workers</li><li class="flotrig bglight">	<span class="displinli">
+		<a href="https://mnregaweb4.nic.in/netnrega/app_issue.aspx?page=d&lflag=&state_name=HARYANA&state_code=12&district_name=KURUKSHETRA&district_code=1203&fin_year=2022-2023&source=national&Digest=CdDeUwbu9g/fv3ZpNOb83w" target="_blank" class="underline pdcls10">2022-23</a> <br> 
+					 <a href="https://mnregaweb4.nic.in/netnrega/app_issue.aspx?page=s&lflag=eng&state_name=HARYANA&state_code=12&fin_year=2021-2022&source=national&Digest=qCkFVitsWGJYj0yc7HMIfg" target="_blank"class="underline "> 2021-2022</a> <br> 
+					 <a href="#" target="_blank"class="underline "> </a>
 					 </span></li>	
 	
-			<li class="flotlefty bgsuccess">PM KISAN SAMMAN NIDHI</li><li class="flotrig bgsuccess">	<span class="displinli"><a href="#" target="_blank" class="underline pdcls10">2010-11</a> <br> 
-					 <a href="https://grammanchitra.gov.in/" target="_blank"class="underline ">  2011-12</a> <br> 
-					 <a href="#" target="_blank"class="underline ">  2011-12</a>
+			<li class="flotlefty bgsuccess">PM KISAN SAMMAN NIDHI</li><li class="flotrig bgsuccess">	<span class="displinli">
+			<a href="https://pmkisan.gov.in/Rpt_BeneficiaryStatus_pub.aspx" target="_blank" class="underline pdcls10">Benifical List</a> <br> 
+				
 					 </span></li>	
 					 
 		
 		<li class="flotlefty bglight">PR Center wise-<br>Ration Cards</li><li class="flotrig bglight">	<span class="displinli">
-		<a href="http://epos.haryanafood.gov.in/AbstractTransReport.jsp" target="_blank" class="underline pdcls10">2010-11</a> <br> 
+		<a href="http://epos.haryanafood.gov.in/AbstractTransReport.jsp" target="_blank" class="underline pdcls10">PR Centers</a> <br> 
 					 <a href="#" target="_blank"class="underline ">  2011-12</a> <br> 
 					 <a href="#" target="_blank"class="underline ">  2011-12</a>
 					 </span></li>	
