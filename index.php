@@ -346,7 +346,8 @@ form#myForm ul {
 .wrapper {
      background: #e8fcff;
     padding-bottom: 11px;
-    padding-top: 10px;}
+    padding-top: 10px;    
+	}
 	
 	
 	.btn-primary {
