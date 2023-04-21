@@ -23,7 +23,7 @@ if(isset($_POST["state_id"]) && !empty($_POST["state_id"])){
             echo '<option value="'.$row['city_id'].'">'.$row['city_name'].'</option>';
         }
     }else{
-        echo '<option value="">Village Not Available</option>';
+        echo '<option value="">Village Not Available</option>';    
     }
 }
 if(isset($_POST["city_id"]) && !empty($_POST["city_id"])){
